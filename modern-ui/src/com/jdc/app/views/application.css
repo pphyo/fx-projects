@@ -1,0 +1,283 @@
+.login-frame {
+	-fx-border-radius: 40px;
+	-fx-background-radius: 40px;
+	-fx-pref-width: 600px;
+	-fx-pref-height: 400px;
+}
+
+.login-part {
+	-fx-border-radius: 40px;
+	-fx-background-radius: 40px;
+	-fx-padding: 0 0 10px;
+	-fx-alignment: center;
+	-fx-pref-width: 280px;
+	-fx-spacing: 20px;
+	-fx-background-color: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}
+
+.login-logo-wrap {
+	-fx-alignment: bottom-center;
+	-fx-spacing: 5px;
+	-fx-border-radius: 40px;
+	-fx-background-radius: 40px;
+}
+
+.login-logo-wrap .login-logo-lbl {
+	-fx-text-fill: white;
+	-fx-font-family: "Fira Code";
+	-fx-font-size: 22px;
+	-fx-font-weight: bold;
+}
+
+.app-desc-wrap {
+	-fx-alignment: center;
+	-fx-spacing: 2px;
+}
+
+.app-desc1 {
+	-fx-text-fill: white;
+	-fx-font-family: "Arial";
+	-fx-font-size: 14px;
+}
+
+.app-desc2 {
+	-fx-text-fill: white;
+	-fx-font-family: "Arial";
+	-fx-font-size: 21px;
+}
+
+.dev-ads {
+	-fx-text-fill: white;
+	-fx-font-family: "Cascadia Mono PL";
+	-fx-font-size: 11px;
+	-fx-font-weight: bold;
+}
+
+.login-form {
+	-fx-border-radius: 40px;
+	-fx-background-radius: 40px;
+	-fx-alignment: center;
+	-fx-padding: 0 60 0 60;
+}
+
+.lg-form-title {
+	-fx-text-fill: #051937;
+	-fx-font-family: "JetBrains Mono";
+	-fx-font-size: 23px;
+	-fx-font-weight: bold;
+}
+
+.lg-button {
+	-fx-alignment: bottom-center;
+	-fx-spacing: 8px;
+}
+
+.lg-button > .button {
+	-fx-pref-width: 120px;
+	-fx-background-color: #051937;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-background-radius: 30px;
+	-fx-border-radius: 30px;
+}
+
+.lg-button > .button:hover {
+	-fx-background-color: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+	-fx-cursor: hand;
+}
+
+.frame {
+	-fx-pref-width: 1100px;
+	-fx-pref-height: 700px;
+	-fx-border-radius: 40px;
+	-fx-background-radius: 40px;
+}
+
+.side-bar {
+	-fx-border-radius: 40px;
+	-fx-background-radius: 40px;
+	-fx-pref-width: 220px;
+	-fx-background-color: #051937;
+}
+
+.app-logo {
+	-fx-pref-height: 80px;
+	-fx-alignment: center;
+	-fx-spacing: 15px;
+}
+
+.app-logo > Label, .app-logo > SVGPath {
+	-fx-text-fill: white;
+	-fx-font-family: "Fira Code";
+	-fx-font-size: 25px;
+	-fx-font-weight: bold;
+	-fx-fill: white;
+}
+
+.menu-btn-wrap {
+	-fx-padding: 0 10 10 10;
+	-fx-spacing: 10px;
+}
+
+.menu-btn {
+	-fx-pref-height: 40px;
+	-fx-alignment: center-left;
+	-fx-padding: 10px;
+	-fx-spacing: 10px;
+}
+
+.menu-btn Label, .menu-btn SVGPath {
+	-fx-text-fill: white;
+	-fx-font-family: "Cascadia Mono PL";
+	-fx-font-size: 16px;
+	-fx-fill: white;
+}
+
+.menu-btn:hover {
+	-fx-background-color: #A8EB12;
+	-fx-border-radius: 8px;
+	-fx-background-radius: 8px;
+	-fx-cursor: hand;
+}
+
+.menu-btn:hover Label, .menu-btn:hover SVGPath {
+	-fx-text-fill: #051937;
+	-fx-fill: #051937;
+}
+
+.active {
+	-fx-background-color: #A8EB12;
+	-fx-border-radius: 8px;
+	-fx-background-radius: 8px;
+}
+
+.active Label, .active SVGPath {
+	-fx-text-fill: #051937;
+	-fx-fill: #051937;
+	-fx-cursor: hand;
+}
+
+.title-bar {
+	-fx-pref-height: 80px;
+	-fx-padding: 10px;
+	-fx-alignment: center-left;
+}
+
+.title-lbl {
+	-fx-text-fill: #051937;
+	-fx-font-family: "JetBrains Mono";
+	-fx-font-size: 23px;
+	-fx-font-weight: bold;
+}
+
+.titleUser {
+	-fx-padding: 10px;
+	-fx-spacing: 10px;
+	-fx-alignment: center;
+}
+
+.titleUser Label, .titleUser SVGPath {
+	-fx-fill: #051937;
+	-fx-text-fill: #051937;
+	-fx-font-family: "JetBrains Mono";
+	-fx-font-size: 15px;
+	-fx-font-weight: bold;
+}
+
+.clock {
+	-fx-padding: 10 0 10 0;
+	-fx-spacing: 5px;
+	-fx-alignment: center;
+}
+
+.clock Label {
+	-fx-text-fill: #051937;
+	-fx-font-family: "JetBrains Mono";
+	-fx-font-size: 15px;
+	-fx-font-weight: bold;
+}
+
+.view {
+	-fx-pref-width: 880px;
+	-fx-pref-height: 620px;
+}
+
+.search-bar {
+	-fx-pref-height: 50px;
+}
+
+.txt-fld {
+	-fx-pref-height: 28px;
+	-fx-alignment: center-left;
+	-fx-spacing: 5px;
+	-fx-border-color: #051937;
+	-fx-border-width: 0 0 1 0;
+}
+
+.txt-fld > .text-field, .txt-fld > SVGPath {
+	-fx-pref-width: 178px;
+    -fx-prompt-text-fill: #051937;
+    -fx-background-color: transparent;
+    -fx-fill: #051937;
+}
+
+.date-picker {
+	-fx-pref-width: 150px;
+	-fx-background-color: transparent;
+	-fx-border-color: #051937;
+	-fx-border-width: 0 0 1 0;
+}
+
+.date-picker > .text-field {
+	-fx-background-color: transparent;
+	-fx-prompt-text-fill: #051937;
+}
+
+.date-picker > .arrow-button {
+	-fx-background-color: transparent;
+	-fx-border-color: #051937;
+	-fx-border-width: 0 1 0 0;
+}
+
+.btn {
+	-fx-pref-width: 100px;
+	-fx-pref-height: 28px;
+	-fx-background-color: #051937;
+	-fx-border-radius: 15px;
+	-fx-background-radius: 15px;
+	-fx-text-fill: white;
+	-fx-spacing: 5px;
+}
+
+.btn > SVGPath {
+	-fx-fill: white;
+}
+
+.btn:hover {
+	-fx-background-color: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+	-fx-cursor: hand;
+}
+
+.ali-cl {
+	-fx-alignment: center-left;
+}
+
+.ali-c {
+	-fx-alignment: center;
+}
+
+.spac10 {
+	-fx-spacing: 10px;
+}
+
+.spac30 {
+	-fx-spacing: 30px;
+}
+
+.pad10-rbl {
+	-fx-padding: 0 10 10 10;
+}
+
+.pad10-rb {
+	-fx-padding: 0 10 10 0;
+}
