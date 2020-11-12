@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" styleClass="view" stylesheets="@common.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.pos.view.CategoryManagement">
+   <children>
+      <HBox styleClass="search-bar">
+         <children>
+            <TextField fx:id="name" promptText="Enter name" />
+            <Button mnemonicParsing="false" onAction="#add" styleClass="btn" text="Add" />
+            <Button mnemonicParsing="false" onAction="#search" styleClass="btn" text="Search" />
+            <Button mnemonicParsing="false" onAction="#clear" styleClass="btn" text="Clear" />
+            <Button mnemonicParsing="false" onAction="#upload" styleClass="btn" text="Upload" />
+         </children>
+      </HBox>
+      <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+        <content>
+            <TilePane fx:id="boxHolder">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" styleClass="cat-box">
+                     <children>
+                        <Label text="Foods">
+                           <font>
+                              <Font name="Rockwell" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </TilePane>
+        </content>
+      </ScrollPane>
+   </children>
+</VBox>

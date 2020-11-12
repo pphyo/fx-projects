@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="login-frame" stylesheets="@common.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.pos.view.Login">
+   <children>
+      <VBox styleClass="login-left-wrap">
+         <children>
+            <HBox blendMode="ADD" styleClass="login-logo-wrap">
+               <children>
+                  <ImageView fx:id="pic" fitHeight="121.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox HBox.hgrow="ALWAYS">
+         <children>
+            <HBox>
+               <children>
+                  <Label text="POS Log In">
+                     <styleClass>
+                        <String fx:value="ff-arial" />
+                        <String fx:value="fs22" />
+                     </styleClass>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="ali-cl" />
+                  <String fx:value="login-title-wrap" />
+               </styleClass>
+            </HBox>
+            <HBox styleClass="info">
+               <children>
+                  <Label fx:id="info" />
+               </children>
+            </HBox>
+            <GridPane fx:id="grid" vgap="7.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label styleClass="fs13" text="User Name or Email" />
+                  <HBox styleClass="ali-cl" GridPane.rowIndex="1">
+                     <children>
+                        <TextField fx:id="userName" promptText="Enter user name or email" styleClass="wid180" />
+                     </children>
+                  </HBox>
+                  <Label styleClass="fs13" text="Password" GridPane.rowIndex="2" />
+                  <HBox GridPane.rowIndex="3">
+                     <children>
+                        <PasswordField fx:id="password" promptText="Enter password" styleClass="wid180" />
+                     </children>
+                     <styleClass>
+                        <String fx:value="ali-cl" />
+                        <String fx:value="wid180" />
+                     </styleClass>
+                  </HBox>
+                  <HBox GridPane.rowIndex="4">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#login" text="Login">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="wid105" />
+                           </styleClass>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#close" text="Close">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="wid105" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                     <styleClass>
+                        <String fx:value="ali-cl" />
+                        <String fx:value="sp10" />
+                     </styleClass>
+                  </HBox>
+               </children>
+               <styleClass>
+                  <String fx:value="ali-cl" />
+                  <String fx:value="login-grid" />
+               </styleClass>
+            </GridPane>
+         </children>
+      </VBox>
+   </children>
+</HBox>

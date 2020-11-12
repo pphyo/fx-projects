@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<VBox fx:id="node" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="emp-det-frame" stylesheets="@common.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.pos.view.EmployeeDetail">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="cont-wrap" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox styleClass="upper-wrap">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label fx:id="name" text="Pyae Phyo">
+                           <styleClass>
+                              <String fx:value="emp-name" />
+                              <String fx:value="ff-arial" />
+                           </styleClass></Label>
+                        <HBox styleClass="emp-year-wrap">
+                           <children>
+                              <Label fx:id="year" text="24">
+                                 <styleClass>
+                                    <String fx:value="emp-year" />
+                                    <String fx:value="ff-arial" />
+                                 </styleClass></Label>
+                              <Label text="years">
+                                 <styleClass>
+                                    <String fx:value="fs13" />
+                                    <String fx:value="ff-arial" />
+                                 </styleClass></Label>
+                           </children>
+                        </HBox>
+                        <Label fx:id="monthAndDay" text="2 months | 7 days">
+                           <styleClass>
+                              <String fx:value="fs13" />
+                              <String fx:value="ff-arial" />
+                           </styleClass></Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="w240px" />
+                        <String fx:value="emp-name-wrap" />
+                     </styleClass>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Next Birthday">
+                           <styleClass>
+                              <String fx:value="ff-arial" />
+                              <String fx:value="fs17" />
+                           </styleClass>
+                        </Label>
+                        <HBox styleClass="pad10-side">
+                           <children>
+                              <VBox styleClass="circle">
+                                 <children>
+                                    <SVGPath content="M28 22v6h-28v-6c1.531 0 2.344-0.688 2.984-1.234 0.531-0.469 0.891-0.766 1.687-0.766s1.141 0.297 1.687 0.766c0.641 0.547 1.437 1.234 2.984 1.234 1.531 0 2.328-0.688 2.984-1.234 0.531-0.469 0.875-0.766 1.672-0.766s1.156 0.297 1.687 0.766c0.641 0.547 1.453 1.234 2.984 1.234s2.344-0.688 2.984-1.234c0.531-0.469 0.891-0.766 1.687-0.766 0.781 0 1.141 0.297 1.672 0.766 0.641 0.547 1.453 1.234 2.984 1.234zM28 17v3c-0.797 0-1.141-0.297-1.687-0.766-0.641-0.547-1.437-1.234-2.969-1.234-1.547 0-2.344 0.688-2.984 1.234-0.547 0.469-0.891 0.766-1.687 0.766s-1.156-0.297-1.687-0.766c-0.641-0.547-1.437-1.234-2.984-1.234-1.531 0-2.328 0.688-2.984 1.234-0.531 0.469-0.875 0.766-1.672 0.766s-1.156-0.297-1.687-0.766c-0.641-0.547-1.453-1.234-2.984-1.234-1.547 0-2.344 0.688-2.984 1.234-0.531 0.469-0.891 0.766-1.687 0.766v-3c0-1.656 1.344-3 3-3h1v-7h4v7h4v-7h4v7h4v-7h4v7h1c1.656 0 3 1.344 3 3zM8 3.5c0 1.656-0.891 2.5-2 2.5s-2-0.891-2-2c0-1.937 2-1.437 2-4 0.75 0 2 1.844 2 3.5zM16 3.5c0 1.656-0.891 2.5-2 2.5s-2-0.891-2-2c0-1.937 2-1.437 2-4 0.75 0 2 1.844 2 3.5zM24 3.5c0 1.656-0.891 2.5-2 2.5s-2-0.891-2-2c0-1.937 2-1.437 2-4 0.75 0 2 1.844 2 3.5z" styleClass="menu-btn-ico" />
+                                 </children>
+                              </VBox>
+                              <VBox styleClass="next-dob" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label fx:id="nextBirthDayOfWeek" text="Monday">
+                                       <styleClass>
+                                          <String fx:value="ff-arial" />
+                                          <String fx:value="fs17" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="nextMonthAndDay" text="3 months | 8 days">
+                                       <styleClass>
+                                          <String fx:value="ff-arial" />
+                                          <String fx:value="fs13" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                     <styleClass>
+                        <String fx:value="w240px" />
+                        <String fx:value="upper-wrap-right" />
+                     </styleClass>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="109.0" prefWidth="105.0" styleClass="det-image-wrap">
+                     <children>
+                        <ImageView fx:id="image" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../Pictures/118239721_639267987004651_9112818562730881848_n.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <GridPane hgap="10.0" vgap="5.0" HBox.hgrow="ALWAYS">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="97.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="242.0" minWidth="10.0" prefWidth="227.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label styleClass="fs13" text="User Name" />
+                        <Label styleClass="fs13" text="Email" GridPane.rowIndex="1" />
+                        <Label styleClass="fs13" text="Role" GridPane.rowIndex="2" />
+                        <Label styleClass="fs13" text="Phone No" GridPane.rowIndex="3" />
+                        <Label styleClass="fs13" text="Address" GridPane.rowIndex="4" />
+                        <Label fx:id="userName" styleClass="fs13" text="#NA" GridPane.columnIndex="1" />
+                        <Label fx:id="email" styleClass="fs13" text="#NA" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="role" styleClass="fs13" text="#NA" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="phoneNo" styleClass="fs13" text="#NA" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="address" styleClass="fs13" text="#NA" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#close" styleClass="btn" text="Close" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                     </children>
+                  </GridPane>
+               </children>
+               <styleClass>
+                  <String fx:value="ali-cl" />
+                  <String fx:value="sp10" />
+                  <String fx:value="det-cont-wrap" />
+               </styleClass>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>

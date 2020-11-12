@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="fx-hello-pos.jnlp">
+  <information>
+    <title>fx-hello-pos</title>
+    <vendor>JDC</vendor>
+    <description>Everything Pos</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="fx-hello-pos.jar" size="80985" download="eager" />
+    <jar href="libs\aopalliance-1.0.jar" size="4467" download="eager" />
+    <jar href="libs\bcmail-jdk14-1.38.jar" size="192035" download="eager" />
+    <jar href="libs\bcmail-jdk14-138.jar" size="192035" download="eager" />
+    <jar href="libs\bcprov-jdk14-1.38.jar" size="1551468" download="eager" />
+    <jar href="libs\bcprov-jdk14-138.jar" size="1551468" download="eager" />
+    <jar href="libs\bctsp-jdk14-1.38.jar" size="22994" download="eager" />
+    <jar href="libs\castor-core-1.3.3.jar" size="49513" download="eager" />
+    <jar href="libs\castor-xml-1.3.3.jar" size="872827" download="eager" />
+    <jar href="libs\commons-beanutils-1.9.0.jar" size="230951" download="eager" />
+    <jar href="libs\commons-collections-3.2.1.jar" size="575389" download="eager" />
+    <jar href="libs\commons-digester-2.1.jar" size="196768" download="eager" />
+    <jar href="libs\commons-lang-2.6.jar" size="284220" download="eager" />
+    <jar href="libs\commons-logging-1.1.1.jar" size="60686" download="eager" />
+    <jar href="libs\core-2.3.0.jar" size="528506" download="eager" />
+    <jar href="libs\ecj-4.3.1.jar" size="1830791" download="eager" />
+    <jar href="libs\itext-2.1.7.js2.jar" size="1130575" download="eager" />
+    <jar href="libs\jackson-annotations-2.1.4.jar" size="34476" download="eager" />
+    <jar href="libs\jackson-core-2.1.4.jar" size="206866" download="eager" />
+    <jar href="libs\jackson-databind-2.1.4.jar" size="926562" download="eager" />
+    <jar href="libs\jakarta-regexp-1.4.jar" size="28576" download="eager" />
+    <jar href="libs\jasperreports-6.1.0.jar" size="5201360" download="eager" />
+    <jar href="libs\javax.inject-1.jar" size="2497" download="eager" />
+    <jar href="libs\jcommon-1.0.15.jar" size="309294" download="eager" />
+    <jar href="libs\jfreechart-1.0.12.jar" size="1368681" download="eager" />
+    <jar href="libs\lombok.jar" size="1794582" download="eager" />
+    <jar href="libs\lucene-analyzers-common-4.5.1.jar" size="1586103" download="eager" />
+    <jar href="libs\lucene-core-4.5.1.jar" size="2297477" download="eager" />
+    <jar href="libs\lucene-queries-4.5.1.jar" size="205195" download="eager" />
+    <jar href="libs\lucene-queryparser-4.5.1.jar" size="384884" download="eager" />
+    <jar href="libs\lucene-sandbox-4.5.1.jar" size="45578" download="eager" />
+    <jar href="libs\mysql-connector-java-8.0.18.jar" size="2330539" download="eager" />
+    <jar href="libs\olap4j-0.9.7.309-JS-3.jar" size="445343" download="eager" />
+    <jar href="libs\spring-aop-3.0.6.RELEASE.jar" size="321428" download="eager" />
+    <jar href="libs\spring-asm-3.0.6.RELEASE.jar" size="53082" download="eager" />
+    <jar href="libs\spring-beans-3.0.6.RELEASE.jar" size="556590" download="eager" />
+    <jar href="libs\spring-context-3.0.6.RELEASE.jar" size="670258" download="eager" />
+    <jar href="libs\spring-core-3.0.6.RELEASE.jar" size="382184" download="eager" />
+    <jar href="libs\spring-expression-3.0.6.RELEASE.jar" size="169752" download="eager" />
+    <jar href="libs\stax-1.2.0.jar" size="179346" download="eager" />
+    <jar href="libs\stax-api-1.0-2.jar" size="23346" download="eager" />
+    <jar href="libs\stax-api-1.0.1.jar" size="26514" download="eager" />
+    <jar href="libs\xml-apis-1.3.02.jar" size="194205" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="0" height="0" main-class="com.jdc.pos.HelloPosApplication"  name="Everything Pos" />
+  <update check="background"/>
+</jnlp>
