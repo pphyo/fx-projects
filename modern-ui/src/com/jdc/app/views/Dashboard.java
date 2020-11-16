@@ -16,12 +16,13 @@ public class Dashboard {
 	@FXML
 	private LineChart<String, Integer> lineChart;
 	@FXML
-	private PieChart pieChartOne;
+	private PieChart categoryChart;
 	@FXML
-	private PieChart pieChartTwo;
+	private PieChart productChart;
 	
 	public void initialize() {
 		loadPieChartData();
+		load();
 	}
 	
 	public void load() {
@@ -69,8 +70,8 @@ public class Dashboard {
 		javafx.scene.chart.PieChart.Data uk2 = new javafx.scene.chart.PieChart.Data("UK", 59);
 		javafx.scene.chart.PieChart.Data us2 = new javafx.scene.chart.PieChart.Data("USA", 285);
 		
-		pieChartOne.getData().addAll(c1, i1, b1, uk1, us1);
-		pieChartTwo.getData().addAll(c2, i2, b2, uk2, us2);
+		categoryChart.getData().addAll(c1, i1, b1, uk1, us1);
+		productChart.getData().addAll(c2, i2, b2, uk2, us2);
 	}
 
 }

@@ -46,8 +46,8 @@
       </HBox>
       <HBox>
          <children>
-            <PieChart fx:id="pieChartOne" />
-            <PieChart fx:id="pieChartTwo" />
+            <PieChart fx:id="categoryChart" />
+            <PieChart fx:id="productChart" />
          </children>
          <styleClass>
             <String fx:value="pad10-rbl" />

@@ -2,9 +2,12 @@ package com.jdc.app.views;
 
 import java.time.LocalTime;
 
-import com.jdc.app.util.ClockUtil;
+import com.jdc.app.util.CommonUtil;
+import com.jdc.app.views.page.Page;
+import com.jdc.app.views.page.PageLoader;
 
-import animatefx.animation.BounceIn;
+import animatefx.animation.FadeIn;
+import animatefx.animation.FadeInRight;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -15,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -22,7 +26,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-public class RootFrame {
+public class RootFrame implements PageLoader {
 	
 	@FXML
 	private VBox btnHolder;
@@ -44,6 +48,7 @@ public class RootFrame {
 	@FXML
 	private void initialize() {
 		playClock();
+		loadView(Page.Dashboard);
 	}
 	
 	public static void show() {
@@ -59,56 +64,38 @@ public class RootFrame {
 		}
 	}
 	
-	public void loadDashboardView(MouseEvent event) {
-		changeActive(event);
-		loadView("Dashboard", "POS Dashboard");
-		new BounceIn((Node)event.getSource()).play();
-	}
-	
-	public void loadSaleView(MouseEvent event) {
-		changeActive(event);
-		new BounceIn((Node)event.getSource()).play();
-	}
-	
-	public void loadCategoryView(MouseEvent event) {
-		changeActive(event);
-		new BounceIn((Node)event.getSource()).play();
-	}
-	
-	public void loadProductView(MouseEvent event) {
-		changeActive(event);
-		new BounceIn((Node)event.getSource()).play();
-	}
-	
-	public void loadSaleHistoryView(MouseEvent event) {
-		changeActive(event);
-		new BounceIn((Node)event.getSource()).play();
-	}
-	
-	public void loadMemberView(MouseEvent event) {
-		changeActive(event);
-		new BounceIn((Node)event.getSource()).play();
-	}
-	
+
 	public void loadLogOut() {
 		System.exit(0);
 	}
 	
-	public void loadView(String viewFile, String viewName) {
-		title.setText(viewName);
+	@Override
+	public void loadView(Page page) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource(viewFile.concat(".fxml")));
-			viewHolder.getChildren().clear();
-			viewHolder.getChildren().add(root);
+			Parent root = FXMLLoader.load(getClass().getResource(page.getViewName()));
+			loadView(root);
+			new FadeInRight(root).play();
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 		}
 	}
 	
-	private void changeActive(MouseEvent event) {
-		Node n = (Node) event.getSource();
-		btnHolder.getChildren().stream().filter(a -> a.getStyleClass().contains("active")).findAny().ifPresent(a -> a.getStyleClass().remove("active"));
-		n.getStyleClass().add("active");
+	private void loadView(Parent root) {
+		viewHolder.getChildren().clear();
+		viewHolder.getChildren().add(root);
+	}
+	
+	@FXML
+	void loadView(MouseEvent event) {
+		Node node = (Node)event.getSource();
+		loadView(Page.valueOf(node.getId()));
+		btnHolder.getChildren().stream().filter(n -> n instanceof HBox)
+							   .map(n -> (HBox)n)
+							   .filter(box -> box.getStyleClass().contains("active"))
+							   .findAny()
+							   .ifPresent(box -> box.getStyleClass().remove("active"));
+		node.getStyleClass().add("active");
+		new FadeIn(node).play();
 	}
 	
 	private void playClock() {
@@ -116,12 +103,12 @@ public class RootFrame {
 			LocalTime now = LocalTime.now();
 			
 			int h = now.getHour();
-			int twelveHour = ClockUtil.getTwelveHour(h);
+			int twelveHour = CommonUtil.getTwelveHour(h);
 			
-			hour.setText(ClockUtil.concatZero(String.valueOf(twelveHour)));
-			minute.setText(ClockUtil.concatZero(String.valueOf(now.getMinute())));
-			second.setText(ClockUtil.concatZero(String.valueOf(now.getSecond())));
-			amPM.setText(ClockUtil.getAmPm(h));
+			hour.setText(CommonUtil.concatZero(String.valueOf(twelveHour)));
+			minute.setText(CommonUtil.concatZero(String.valueOf(now.getMinute())));
+			second.setText(CommonUtil.concatZero(String.valueOf(now.getSecond())));
+			amPM.setText(CommonUtil.getAmPm(h));
 			
 		}), new KeyFrame(Duration.seconds(1)));
 		timeline.setCycleCount(Animation.INDEFINITE);
