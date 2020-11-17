@@ -370,16 +370,23 @@
 }
 
 .search-box > .text-field {
-	-fx-pref-width: 1000px;
 	-fx-prompt-text-fill: primary;
 	-fx-background-color: transparent;
 }
 
-.search-box > VBox > SVGPath {
+.search-box > VBox, .icon-box {
+	-fx-background-color: silver;
+	-fx-background-radius: 5px;
+	-fx-border-radius: 5px;
+	-fx-pref-height: 32px;
+	-fx-pref-width: 30px;
+}
+
+.search-box > VBox > SVGPath, .icon-box > SVGPath {
 	-fx-fill: primary;
 }
 
-.search-box > VBox:hover {
+.search-box > VBox:hover, .icon-box:hover {
 	-fx-cursor: hand;
 }
 
@@ -529,6 +536,14 @@ TilePane {
 	-fx-pref-width: 20px;
 }
 
+.wid180 {
+	-fx-pref-width: 180px;
+}
+
+.wid500 {
+	-fx-pref-width: 500px;
+}
+
 .ali-c {
 	-fx-alignment: center;
 }
@@ -551,6 +566,10 @@ TilePane {
 
 .spac30 {
 	-fx-spacing: 30px;
+}
+
+.pad10 {
+	-fx-padding: 10px;
 }
 
 .pad10-r {

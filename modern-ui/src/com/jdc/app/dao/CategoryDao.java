@@ -1,6 +1,7 @@
 package com.jdc.app.dao;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import com.jdc.app.daoimpl.CategoryDaoImpl;
@@ -13,7 +14,8 @@ public interface CategoryDao {
 	}
 	
 	void insert(Category c);
-	void upload(File file);
+	void delete(int id);
+	void upload(File file) throws IOException;
 	Category findByName(String name);
 	List<Category> findAll();
 }
