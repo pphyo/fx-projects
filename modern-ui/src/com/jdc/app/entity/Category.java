@@ -3,7 +3,7 @@ package com.jdc.app.entity;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import com.jdc.app.util.Security;
+import com.jdc.app.util.CommonUtil;
 
 public class Category {
 	
@@ -17,9 +17,6 @@ public class Category {
 	
 	public Category(String line) {
 		this.name = line;
-		creationDate = LocalDate.now();
-		creationTime = LocalTime.now();
-		creator = Security.getEmployee().getUsername();
 	}
 
 	public int getId() {
@@ -38,16 +35,16 @@ public class Category {
 		this.name = name;
 	}
 
-	public LocalDate getCreationDate() {
-		return creationDate;
+	public String getCreationDate() {
+		return CommonUtil.format(creationDate);
 	}
 
 	public void setCreationDate(LocalDate creationDate) {
 		this.creationDate = creationDate;
 	}
 
-	public LocalTime getCreationTime() {
-		return creationTime;
+	public String getCreationTime() {
+		return CommonUtil.format(creationTime);
 	}
 
 	public void setCreationTime(LocalTime creationTime) {

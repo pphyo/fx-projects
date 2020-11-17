@@ -8,4 +8,5 @@ module com.jdc.unknown {
 	requires transitive javafx.graphics;
 
 	opens com.jdc.app.views to javafx.fxml;
+	opens com.jdc.app.entity to javafx.base;
 }

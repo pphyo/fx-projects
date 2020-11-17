@@ -454,7 +454,6 @@ TilePane {
 .table-view .column-header-background{
     -fx-background-color: linear-gradient(to right top, #004d7a, #008793, #008793, #008793, #004d7a);
     -fx-background-radius: 7px 7px 0px 0px;
-    -fx-padding: 0 0 5px 0;
 }
 
 .table-view .column-header {
@@ -467,24 +466,11 @@ TilePane {
 
 .table-view .table-cell{
     -fx-border-color: transparent;
-    -fx-padding: 2;
+    -fx-padding: 2 5 2 5;
 }
 
-.table-row-cell:hover {
-    -fx-background-color: #93f9b911;
-    -fx-text-background-color: red;
-}
-
-.table-row-cell:odd{
-    -fx-background-color: white;
-    -fx-background-insets: 0, 0 0 1 0;
-    -fx-padding: 0.0em;
-}
-
-.table-row-cell:even{
-    -fx-background-color: silver;
-    -fx-background-insets: 0, 0 0 1 0;
-    -fx-padding: 0.0em;
+.table-row-cell:focused > .label {
+	-fx-text-fill: primary;
 }
 
 .table-view .virtual-flow .scroll-bar:vertical,
@@ -498,15 +484,14 @@ TilePane {
 
 .table-view .virtual-flow .scroll-bar .increment-button,
 .table-view .virtual-flow .scroll-bar .decrement-button {
-    -fx-opacity: 0;
-    -fx-padding: 2;
+    -fx-opacity: 5;
 }
 
 .table-view .virtual-flow .scroll-bar:vertical .thumb{
-    -fx-background-color: #C0C0C0;
+    -fx-background-color: #dcdcdc;
 }
 .table-view .virtual-flow .scroll-bar:horizontal .thumb {
-    -fx-background-color: #C0C0C0;
+    -fx-background-color: #dcdcdc;
 }
 
 .btn {

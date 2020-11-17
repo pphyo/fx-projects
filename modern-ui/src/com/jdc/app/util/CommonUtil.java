@@ -1,14 +1,20 @@
 package com.jdc.app.util;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class CommonUtil {
 	
-	private static final DateTimeFormatter DF = DateTimeFormatter.ofPattern("yyyy, MMM dd (E)");
+	private static final DateTimeFormatter DF = DateTimeFormatter.ofPattern("dd-MM-yyyy (E)");
+	private static final DateTimeFormatter TF = DateTimeFormatter.ofPattern("hh:mm a");
 
 	public static String format(LocalDate date) {
 		return DF.format(date);
+	}
+	
+	public static String format(LocalTime time) {
+		return TF.format(time);
 	}
 	
 	public static String concatZero(String value) {

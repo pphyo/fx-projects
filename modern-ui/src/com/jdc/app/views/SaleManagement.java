@@ -28,12 +28,12 @@ public class SaleManagement implements PageLoader {
     @FXML
     private StackPane cartViewHolder;
     @FXML
-    private VBox tool;
+    private VBox searchBox;
     
     @FXML
     private void initialize() {
     	loadView(Page.CartOrders);
-    	UIUtil.setTooltip(tool, "Search Products");
+    	UIUtil.setTooltip(searchBox, "Search products");
     }
 
     @FXML
