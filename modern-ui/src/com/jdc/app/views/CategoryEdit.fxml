@@ -1,8 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</VBox>
-
+<HBox stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.app.views.CategoryEdit">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="login-part">
+         <children>
+            <VBox VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox styleClass="login-logo-wrap">
+                     <children>
+                        <ImageView fitHeight="96.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imgs/accusoft.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="login-logo-lbl" text="Mini POS" />
+                     </children>
+                  </HBox>
+                  <VBox styleClass="app-desc-wrap">
+                     <children>
+                        <Label styleClass="app-desc1" text="Manage sales for your Mart" />
+                     </children>
+                  </VBox>
+               </children>
+               <styleClass>
+                  <String fx:value="ali-c" />
+                  <String fx:value="spac30" />
+               </styleClass>
+            </VBox>
+            <Label styleClass="dev-ads" text="Developed By JDC" />
+         </children>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="login-form" HBox.hgrow="ALWAYS">
+         <children>
+            <GridPane fx:id="grdNode" vgap="5.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="lblTitle" styleClass="lg-form-title" text="Add Category" />
+                  <Label text="Name" GridPane.rowIndex="1" />
+                  <HBox styleClass="txt-fld" GridPane.rowIndex="2">
+                     <children>
+                        <SVGPath content="M11.016 20.016l3.984-4.031h6v4.031h-9.984zM6.188 18l8.672-8.672-1.219-1.219-8.625 8.672v1.219h1.172zM18.422 5.813q0.609 0.609 0.609 1.406t-0.609 1.406l-11.391 11.391h-4.031v-4.078q11.25-11.203 11.391-11.344 0.609-0.609 1.406-0.609t1.406 0.609z" />
+                        <TextField fx:id="txtName" promptText="Enter category name" />
+                     </children>
+                  </HBox>
+                  <HBox styleClass="lg-button" GridPane.rowIndex="3">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#close" text="Close" />
+                        <Button mnemonicParsing="false" onAction="#save" text="Save" />
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="login-frame" />
+      <String fx:value="cat-vw-fr" />
+   </styleClass>
+</HBox>

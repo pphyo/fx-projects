@@ -8,8 +8,6 @@
 .login-frame {
 	-fx-border-radius: 40px;
 	-fx-background-radius: 40px;
-	-fx-pref-width: 600px;
-	-fx-pref-height: 400px;
 }
 
 .login-part {
@@ -80,7 +78,7 @@
 }
 
 .lg-button > .button {
-	-fx-pref-width: 120px;
+	-fx-pref-width: 110px;
 	-fx-background-color: primary;
 	-fx-text-fill: white;
 	-fx-font-weight: bold;
@@ -222,9 +220,11 @@
 	-fx-alignment: center;
 	-fx-pref-width: 220px;
 	-fx-pref-height: 130px;
-	-fx-background-color: primary;
+	-fx-background-color: #dcdcdc;
 	-fx-border-radius: 20px;
 	-fx-background-radius: 20px;
+	-fx-border-color: black;
+	-fx-border-width: 1px;
 	-fx-padding: 10px;
 	-fx-spacing: 8px;
 }
@@ -232,46 +232,19 @@
 .cart-product-box > .pro-price {
 	-fx-font-family: "Arial Narrow";
 	-fx-font-size: 25px;
-	-fx-text-fill: secondary;
+	-fx-text-fill: primary;
 	-fx-font-weight: bold;
 }
 
 .cart-product-box > .c-name {
 	-fx-font-family: "Arial Narrow";
 	-fx-font-size: 16px;
-	-fx-text-fill: white;
+	-fx-text-fill: other;
 	-fx-font-weight: bold;
 }
 
 .cart-product-box:hover {
-	-fx-background-color: linear-gradient(to right top, primary, #004d7a, #008793, #00bf72, secondary);
-	-fx-cursor: hand;
-}
-
-.cart-menu {
-	-fx-border-radius: 5px;
-	-fx-background-radius: 5px;
 	-fx-background-color: silver;
-	-fx-padding: 2px;
-	-fx-spacing: 2px;
-}
-
-.cart-menu > .cart-menu-btn {
-	-fx-pref-width: 200px;
-	-fx-border-radius: 5px;
-	-fx-background-radius: 5px;
-}
-
-.cart-menu > .cart-menu-btn > Label, .cart-menu > .cart-menu-btn > SVGPath {
-	-fx-font-family: "JetBrains Mono";
-	-fx-font-size: 14px;
-	-fx-text-fill: primary;
-	-fx-font-weight: bold;
-	-fx-fill: primary;
-}
-
-.cart-menu > .cart-menu-btn:hover, .cart-menu-active {
-	-fx-background-color: white;
 	-fx-cursor: hand;
 }
 
@@ -347,6 +320,21 @@
 	-fx-pref-height: 50px;
 }
 
+.update-box {
+	-fx-padding: 2px;
+	-fx-spacing: 4px;
+}
+
+.update-box > HBox {
+	-fx-alignment: center;
+	-fx-pref-width: 22px;
+	-fx-pref-height: 22px;
+}
+
+.update-box > HBox:hover {
+	-fx-cursor: hand;
+}
+
 .txt-fld {
 	-fx-pref-height: 28px;
 	-fx-alignment: center-left;
@@ -355,11 +343,35 @@
 	-fx-border-width: 0 0 1 0;
 }
 
+.txt-fld > VBox {
+	-fx-pref-width: 23px;
+	-fx-alignment: center;
+}
+
 .txt-fld > .text-field, .txt-fld > SVGPath {
 	-fx-pref-width: 178px;
     -fx-prompt-text-fill: primary;
     -fx-background-color: transparent;
-    -fx-fill: primary;
+    -fx-fill: primary
+}
+
+.text-area {
+	-fx-pref-width: 178px;
+	-fx-prompt-text-fill: primary;
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
 }
 
 .search-box {
@@ -388,6 +400,25 @@
 
 .search-box > VBox:hover, .icon-box:hover {
 	-fx-cursor: hand;
+}
+
+.combo-box {
+	-fx-pref-width: 178px;
+	-fx-background-color: transparent;
+}
+
+.combo-box .arrow-button:hover {
+	-fx-cursor: hand;
+}
+
+.combo-box .combo-box-popup .list-view, .combo-box .combo-box-popup .list-cell {
+    -fx-background: transparent;
+    -fx-background-color: #dcdcdc;
+    -fx-text-fill: primary;
+}
+
+.combo-box .combo-box-popup .list-cell:hover {
+	-fx-background-color: white;
 }
 
 .date-picker {
@@ -466,6 +497,7 @@ TilePane {
 
 .table-view .table-cell{
     -fx-border-color: transparent;
+    -fx-alignment: center-left;
     -fx-padding: 2 5 2 5;
 }
 
@@ -494,6 +526,21 @@ TilePane {
     -fx-background-color: #dcdcdc;
 }
 
+.check-box {
+	-fx-background-color: transparent;
+}
+
+.check-box .box {
+	-fx-background-color: transparent;
+	-fx-border-color: primary;
+	-fx-border-radius: 3px;
+}
+
+.check-box .text {
+	-fx-text-fill: primary;
+	-fx-font-weight: bold;
+}
+
 .btn {
 	-fx-pref-width: 100px;
 	-fx-pref-height: 28px;
@@ -515,6 +562,21 @@ TilePane {
 
 .ali-cl {
 	-fx-alignment: center-left;
+}
+
+.cat-vw-fr {
+	-fx-pref-width: 600px;
+	-fx-pref-height: 300px;
+}
+
+.pro-vw-fr {
+	-fx-pref-width: 600px;
+	-fx-pref-height: 500px;
+}
+
+.lg-vw-fr {
+	-fx-pref-width: 600px;
+	-fx-pref-height: 400px;
 }
 
 .wid20 {
@@ -604,6 +666,10 @@ TilePane {
 .fs-14 {
 	-fx-font-size: 14px;
 	-fx-font-weight: bold;
+}
+
+.fc-r {
+	-fx-text-fill: red;
 }
 
 .fc-p {

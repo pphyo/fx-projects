@@ -108,7 +108,7 @@
                         <Label text="Employee" />
                      </children>
                   </HBox>
-                  <HBox id="EmployeeManagement" onMouseClicked="#loadView" styleClass="menu-btn">
+                  <HBox id="CustomerManagement" onMouseClicked="#loadView" styleClass="menu-btn">
                      <children>
                         <VBox>
                            <children>

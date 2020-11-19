@@ -1,12 +1,30 @@
 package com.jdc.app.entity;
 
+import com.jdc.app.dao.CategoryDao;
+
 public class Product {
 
 	private int id;
 	private String name;
 	private int price;
 	private String description;
+	private String creator;
+	private boolean stock;
 	private Category category;
+	
+	public Product() {}
+	
+	public Product(String line) {
+		String[] arr = line.split("\t");
+		category = CategoryDao.getInstance().findByName(arr[0]).get(0);
+		name = arr[1];
+		price = Integer.parseInt(arr[2]);
+		stock = arr[3].equals("In stock") ? true : false;
+		if(arr.length == 4)
+			description = "";
+		else
+			description = arr[5];
+	}
 
 	public int getId() {
 		return id;
@@ -39,6 +57,22 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public String getCreator() {
+		return creator;
+	}
+	
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
+	
+	public boolean isStock() {
+		return stock;
+	}
+	
+	public void setStock(boolean stock) {
+		this.stock = stock;
+	}
 
 	public Category getCategory() {
 		return category;
@@ -46,6 +80,14 @@ public class Product {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	
+	public String getStockResult() {
+		return stock ? "In stock" : "Out of stock";
+	}
+	
+	public String getCategoryName() {
+		return category.getName();
 	}
 
 }

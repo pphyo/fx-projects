@@ -1,4 +1,4 @@
-package com.jdc.app.util;
+package com.jdc.app.util.ui;
 
 import java.util.function.Consumer;
 
@@ -6,17 +6,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Tooltip;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class UIUtil {
 
 	public static <T extends ModalController<E>, E> void show(Class<T> type, E data, Consumer<E> listener) {
 
 		try {
-			Stage stage = new Stage();
+			Stage stage = new Stage(StageStyle.TRANSPARENT);
 			FXMLLoader loader = new FXMLLoader(type.getResource(String.format("%s.fxml", type.getSimpleName())));
-			stage.setScene(new Scene(loader.load()));
+			Scene scene = new Scene(loader.load());
+			scene.setFill(Color.TRANSPARENT);
+			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
 
 			T controller = loader.getController();

@@ -88,6 +88,9 @@ public class RootFrame implements PageLoader {
 	@FXML
 	void loadView(MouseEvent event) {
 		Node node = (Node)event.getSource();
+		
+		title.setText(Page.valueOf(node.getId()).getTitle());
+		
 		loadView(Page.valueOf(node.getId()));
 		btnHolder.getChildren().stream().filter(n -> n instanceof HBox)
 							   .map(n -> (HBox)n)

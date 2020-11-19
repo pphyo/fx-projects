@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<HBox stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.app.views.ProductEdit">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="login-part">
+         <children>
+            <VBox VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox styleClass="login-logo-wrap">
+                     <children>
+                        <ImageView fitHeight="96.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imgs/accusoft.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="login-logo-lbl" text="Mini POS" />
+                     </children>
+                  </HBox>
+                  <VBox styleClass="app-desc-wrap">
+                     <children>
+                        <Label styleClass="app-desc1" text="Manage sales for your Mart" />
+                     </children>
+                  </VBox>
+               </children>
+               <styleClass>
+                  <String fx:value="ali-c" />
+                  <String fx:value="spac30" />
+               </styleClass>
+            </VBox>
+            <Label styleClass="dev-ads" text="Developed By JDC" />
+         </children>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="login-form" HBox.hgrow="ALWAYS">
+         <children>
+            <GridPane fx:id="grdNode" vgap="5.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label fx:id="lblTitle" styleClass="lg-form-title" text="Add Category" />
+                  <Label text="Category" GridPane.rowIndex="1" />
+                  <HBox styleClass="txt-fld" GridPane.rowIndex="2">
+                     <children>
+                        <VBox>
+                           <children>
+                              <SVGPath content="M17.016 18v-12.984h-10.031v12.984l5.016-2.203zM17.016 3q0.797 0 1.383 0.609t0.586 1.406v15.984l-6.984-3-6.984 3v-15.984q0-0.797 0.586-1.406t1.383-0.609h10.031z" />
+                           </children>
+                        </VBox>
+                        <ComboBox fx:id="cbxCategory" prefWidth="150.0" promptText="Choose category" />
+                     </children>
+                  </HBox>
+                  <Label text="Product" GridPane.rowIndex="3" />
+                  <HBox styleClass="txt-fld" GridPane.rowIndex="4">
+                     <children>
+                        <VBox>
+                           <children>
+                              <SVGPath content="M11.016 20.016l3.984-4.031h6v4.031h-9.984zM6.188 18l8.672-8.672-1.219-1.219-8.625 8.672v1.219h1.172zM18.422 5.813q0.609 0.609 0.609 1.406t-0.609 1.406l-11.391 11.391h-4.031v-4.078q11.25-11.203 11.391-11.344 0.609-0.609 1.406-0.609t1.406 0.609z" />
+                           </children>
+                        </VBox>
+                        <TextField fx:id="txtProduct" promptText="Product name" />
+                     </children>
+                  </HBox>
+                  <Label text="Price" GridPane.rowIndex="5" />
+                  <HBox styleClass="txt-fld" GridPane.rowIndex="6">
+                     <children>
+                        <VBox>
+                           <children>
+                              <SVGPath content="M13.406 18.094q3.141-0.609 3.141-3.141 0-2.859-4.219-3.938-2.625-0.656-2.625-1.922 0-0.703 0.633-1.172t1.758-0.469q2.109 0 2.203 1.875h1.969q-0.094-2.672-2.859-3.375v-1.969h-2.672v1.969q-1.359 0.281-2.227 1.102t-0.867 2.086q0 2.625 4.172 3.656 2.672 0.609 2.672 2.156 0 0.609-0.539 1.102t-1.852 0.492q-2.484 0-2.672-1.875h-1.969q0.141 2.672 3.281 3.375v1.969h2.672v-1.922zM12 2.016q4.125 0 7.055 2.93t2.93 7.055-2.93 7.055-7.055 2.93-7.055-2.93-2.93-7.055 2.93-7.055 7.055-2.93z" />
+                           </children>
+                        </VBox>
+                        <TextField fx:id="txtPrice" promptText="Product price" />
+                     </children>
+                  </HBox>
+                  <Label text="Description" GridPane.rowIndex="7" />
+                  <HBox styleClass="txt-fld" GridPane.rowIndex="8" GridPane.rowSpan="2">
+                     <children>
+                        <VBox>
+                           <children>
+                              <SVGPath content="M17 3h-10c-1.654 0-3 1.346-3 3v12c0 1.654 1.346 3 3 3h10c1.654 0 3-1.346 3-3v-12c0-1.654-1.346-3-3-3zM9 5h6v1c0 0.551-0.449 1-1 1h-4c-0.551 0-1-0.449-1-1v-1zM18 18c0 0.551-0.449 1-1 1h-10c-0.551 0-1-0.449-1-1v-12c0-0.551 0.449-1 1-1h1c0 0.262 0 0.601 0 1 0 1.1 0.9 2 2 2h4c1.1 0 2-0.9 2-2 0-0.399 0-0.738 0-1h1c0.551 0 1 0.449 1 1v12zM16 17h-8c-0.276 0-0.5-0.224-0.5-0.5s0.224-0.5 0.5-0.5h8c0.276 0 0.5 0.224 0.5 0.5s-0.224 0.5-0.5 0.5zM16 14h-8c-0.276 0-0.5-0.224-0.5-0.5s0.224-0.5 0.5-0.5h8c0.276 0 0.5 0.224 0.5 0.5s-0.224 0.5-0.5 0.5zM16 11h-8c-0.276 0-0.5-0.224-0.5-0.5s0.224-0.5 0.5-0.5h8c0.276 0 0.5 0.224 0.5 0.5s-0.224 0.5-0.5 0.5z" />
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="txtDescription" promptText="Description" />
+                     </children>
+                  </HBox>
+                  <CheckBox fx:id="chkStock" mnemonicParsing="false" text="In stock" GridPane.rowIndex="10" />
+                  <HBox styleClass="lg-button" GridPane.rowIndex="11">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#close" text="Close" />
+                        <Button mnemonicParsing="false" onAction="#save" text="Save" />
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="login-frame" />
+      <String fx:value="pro-vw-fr" />
+   </styleClass>
+</HBox>

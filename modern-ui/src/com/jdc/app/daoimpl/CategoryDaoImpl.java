@@ -22,7 +22,7 @@ import com.jdc.app.util.StringUtil;
 
 public class CategoryDaoImpl implements CategoryDao {
 	
-	private static final String SELECT = "select * from category where 1 = 1";
+	private final String SELECT = "select * from category where 1 = 1";
 	
 	@Override
 	public void insert(Category c) {
@@ -43,6 +43,24 @@ public class CategoryDaoImpl implements CategoryDao {
 			while(rs.next())
 				c.setId(rs.getInt(1));
 				
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Override
+	public void update(String name, int id) {
+		
+		String sql = "update category set name = ? where id = ?";
+		
+		try(Connection conn = DatabaseConnection.getDbConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql)) {
+			
+			stmt.setString(1, name);
+			stmt.setInt(2, id);
+			stmt.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,30 +91,16 @@ public class CategoryDaoImpl implements CategoryDao {
 	}
 	
 	@Override
-	public Category findByName(String name) {
+	public List<Category> findByName(String name) {
+		List<Category> result = new ArrayList<>();
 		
 		try(Connection conn = DatabaseConnection.getDbConnection();
 				PreparedStatement stmt = conn.prepareStatement(StringUtil.isEmpty(name) ? SELECT : SELECT.concat(" and name like ?"))) {
 			
+			if(!StringUtil.isEmpty(name))
+				stmt.setString(1, "%".concat(name.toLowerCase()).concat("%"));
 			ResultSet rs = stmt.executeQuery();
-			while(rs.next())
-				return getCategoryObject(rs);
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return null;
-	}
-	
-	@Override
-	public List<Category> getAll() {
-		List<Category> result = new ArrayList<>();
-		
-		try(Connection conn = DatabaseConnection.getDbConnection();
-				PreparedStatement stmt = conn.prepareStatement(SELECT)) {
-			
-			ResultSet rs = stmt.executeQuery();
 			while(rs.next())
 				result.add(getCategoryObject(rs));
 			
@@ -105,6 +109,11 @@ public class CategoryDaoImpl implements CategoryDao {
 		}
 		
 		return result;
+	}
+	
+	@Override
+	public List<Category> getAll() {		
+		return findByName(null);
 	}
 	
 	public Category getCategoryObject(ResultSet rs) throws SQLException {

@@ -3,14 +3,16 @@ package com.jdc.app.views;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 
 public class Login {
 
 	@FXML
-	private TextField username;
+	private TextField txtUsername;
 	@FXML
-	private PasswordField password;
+	private PasswordField pwdPassword;
 	@FXML
+	private GridPane grdNode;
 	
 	public void initialize() {
 		
@@ -22,7 +24,7 @@ public class Login {
 	}
 	
 	private void close() {
-		username.getScene().getWindow().hide();
+		txtUsername.getScene().getWindow().hide();
 	}
 	
 }

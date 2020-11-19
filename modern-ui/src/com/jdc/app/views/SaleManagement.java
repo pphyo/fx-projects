@@ -1,73 +1,88 @@
 package com.jdc.app.views;
 
-import com.jdc.app.util.UIUtil;
-import com.jdc.app.views.page.Page;
-import com.jdc.app.views.page.PageLoader;
+import java.util.List;
 
-import animatefx.animation.FadeIn;
-import animatefx.animation.FadeInUp;
+import com.jdc.app.dao.ProductDao;
+import com.jdc.app.entity.Product;
+import com.jdc.app.util.ui.PosProductBox;
+import com.jdc.app.util.ui.TextFieldUtil;
+import com.jdc.app.util.ui.UIUtil;
+
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
-public class SaleManagement implements PageLoader {
+public class SaleManagement {
 
     @FXML
-    private TextField product;
+    private TextField txtProduct;
     @FXML
-    private TilePane productBoxContainer;
-    @FXML
-    private HBox cartMenu;
-    @FXML
-    private StackPane cartViewHolder;
+    private TilePane tileProboxHolder;
     @FXML
     private VBox searchBox;
+    @FXML
+	private TextField txtcustName;
+	@FXML
+	private TextField txtcustPhone;
+	@FXML
+	private TextField txtcustAddress;
+	@FXML
+	private TextField txtTax;
+	@FXML
+	private Label lblHeaderTotal;
+	@FXML
+	private TableView<?> tblOrderList;
+	@FXML
+	private TableColumn<?, ?> delCol;
+	@FXML
+	private TableColumn<?, ?> nameAndPriceCol;
+	@FXML
+	private TableColumn<?, ?> qtyCol;
+	@FXML
+	private TableColumn<?, ?> totalCol;
+	@FXML
+	private Label lblTax;
+	@FXML
+	private Label lblDiscount;
+	@FXML
+	private Label lblSubTotal;
+	@FXML
+	private Label lblTotal;
+    
+    private ProductDao proDao;
     
     @FXML
     private void initialize() {
-    	loadView(Page.CartOrders);
+    	proDao = ProductDao.getInstance();
+
     	UIUtil.setTooltip(searchBox, "Search products");
     }
 
     @FXML
     void search(MouseEvent event) {
-
-    }
-    
-    @Override
-    public void loadView(Page page) {
-    	try {
-			Parent root = FXMLLoader.load(getClass().getResource(page.getViewName()));
-			loadView(root);
-			new FadeInUp(root).play();
-		} catch (Exception e) {
-			
-		}    	
-    }
-    
-    private void loadView(Parent root) {
-    	cartViewHolder.getChildren().clear();
-    	cartViewHolder.getChildren().add(root);
+    	tileProboxHolder.getChildren().clear();
+    	List<Product> list = proDao.find(txtProduct.getText(), txtProduct.getText(), TextFieldUtil.getPriceValue(txtProduct));
+    	list.stream().map(PosProductBox::new).forEach(tileProboxHolder.getChildren()::add);
     }
     
     @FXML
-    void loadView(MouseEvent event) {
-    	Node node = (Node)event.getSource();
-		loadView(Page.valueOf(node.getId()));
-		cartMenu.getChildren().stream().filter(n -> n instanceof HBox)
-							   .map(n -> (HBox)n)
-							   .filter(box -> box.getStyleClass().contains("cart-menu-active"))
-							   .findAny()
-							   .ifPresent(box -> box.getStyleClass().remove("cart-menu-active"));
-		node.getStyleClass().add("cart-menu-active");
-		new FadeIn(node).play();
+    void addToCart(MouseEvent event) {
+    	
     }
+    
+    @FXML
+    void save() {
+		
+	}
+	
+    @FXML
+	void payNow() {
+		
+	}
 
 }

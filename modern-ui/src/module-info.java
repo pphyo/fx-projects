@@ -6,6 +6,7 @@ module com.jdc.unknown {
 	requires AnimateFX;
 	requires java.sql;
 	requires transitive javafx.graphics;
+	requires javafx.base;
 
 	opens com.jdc.app.views to javafx.fxml;
 	opens com.jdc.app.entity to javafx.base;

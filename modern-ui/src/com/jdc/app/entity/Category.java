@@ -5,7 +5,7 @@ import java.time.LocalTime;
 
 import com.jdc.app.util.CommonUtil;
 
-public class Category {
+public class Category implements Comparable<Category> {
 	
 	private int id;
 	private String name;
@@ -57,6 +57,16 @@ public class Category {
 
 	public void setCreator(String creator) {
 		this.creator = creator;
+	}
+	
+	@Override
+	public String toString() {
+		return name;
+	}
+	
+	@Override
+	public int compareTo(Category o) {
+		return this.name.compareTo(o.getName());
 	}
 	
 }

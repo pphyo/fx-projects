@@ -14,8 +14,9 @@ public interface CategoryDao {
 	}
 	
 	void insert(Category c);
+	void update(String name, int id);
 	void delete(int id);
 	void upload(File file) throws IOException;
-	Category findByName(String name);
+	List<Category> findByName(String name);
 	List<Category> getAll();
 }
