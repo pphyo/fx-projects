@@ -231,16 +231,27 @@
 
 .cart-product-box > .pro-price {
 	-fx-font-family: "Arial Narrow";
-	-fx-font-size: 25px;
+	-fx-font-size: 23px;
 	-fx-text-fill: primary;
 	-fx-font-weight: bold;
 }
 
 .cart-product-box > .c-name {
 	-fx-font-family: "Arial Narrow";
-	-fx-font-size: 16px;
+	-fx-font-size: 14px;
 	-fx-text-fill: other;
 	-fx-font-weight: bold;
+}
+
+.cart-product-box > HBox {
+	-fx-alignment: center;
+	-fx-spacing: 10px;
+}
+
+.cart-product-box > HBox > Label {
+	-fx-text-fill: primary;
+	-fx-font-weight: bold;
+	-fx-font-size: 13px;
 }
 
 .cart-product-box:hover {
@@ -653,6 +664,10 @@ TilePane {
 
 .pad10-tb {
 	-fx-padding: 10 0 10 0;
+}
+
+.pad5-tb {
+	-fx-padding: 10 0 5 0;
 }
 
 .pad10-rb {

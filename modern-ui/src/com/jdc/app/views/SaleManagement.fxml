@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="view" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.app.views.SaleManagement">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.app.views.SaleManagement">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
          <children>
@@ -65,105 +65,12 @@
                                     </Label>
                                     <Label styleClass="c-name" text="Ready Made Foods" />
                                     <Label styleClass="pro-price" text="200 MMK" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="cart-product-box">
-                                 <children>
-                                    <Label styleClass="pro-price" text="Shan Shwe Taung" textFill="WHITE">
-                                       <font>
-                                          <Font name="Arial Narrow" size="37.0" />
-                                       </font>
-                                    </Label>
-                                    <Label styleClass="c-name" text="Ready Made Foods" />
-                                    <Label styleClass="pro-price" text="100 MMK" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="cart-product-box">
-                                 <children>
-                                    <Label styleClass="pro-price" text="Shuu Shall" textFill="WHITE">
-                                       <font>
-                                          <Font name="Arial Narrow" size="37.0" />
-                                       </font>
-                                    </Label>
-                                    <Label styleClass="c-name" text="Ready Made Foods" />
-                                    <Label styleClass="pro-price" text="50 MMK" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="cart-product-box">
-                                 <children>
-                                    <Label styleClass="pro-price" text="Coca Cola" textFill="WHITE">
-                                       <font>
-                                          <Font name="Arial Narrow" size="37.0" />
-                                       </font>
-                                    </Label>
-                                    <Label styleClass="c-name" text="Drinks" />
-                                    <Label styleClass="pro-price" text="400 MMK" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="cart-product-box">
-                                 <children>
-                                    <Label styleClass="pro-price" text="Burn" textFill="WHITE">
-                                       <font>
-                                          <Font name="Arial Narrow" size="37.0" />
-                                       </font>
-                                    </Label>
-                                    <Label styleClass="c-name" text="Drinks" />
-                                    <Label styleClass="pro-price" text="600 MMK" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="cart-product-box">
-                                 <children>
-                                    <Label styleClass="pro-price" text="Pwint Phyu" textFill="WHITE">
-                                       <font>
-                                          <Font name="Arial Narrow" size="37.0" />
-                                       </font>
-                                    </Label>
-                                    <Label styleClass="c-name" text="Snacks" />
-                                    <Label styleClass="pro-price" text="100 MMK" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="cart-product-box">
-                                 <children>
-                                    <Label styleClass="pro-price" text="Nabati" textFill="WHITE">
-                                       <font>
-                                          <Font name="Arial Narrow" size="37.0" />
-                                       </font>
-                                    </Label>
-                                    <Label styleClass="c-name" text="Snacks" />
-                                    <Label styleClass="pro-price" text="200 MMK" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="cart-product-box">
-                                 <children>
-                                    <Label styleClass="pro-price" text="Shar Gun Htoe" textFill="WHITE">
-                                       <font>
-                                          <Font name="Arial Narrow" size="37.0" />
-                                       </font>
-                                    </Label>
-                                    <Label styleClass="c-name" text="Snacks" />
-                                    <Label styleClass="pro-price" text="200 MMK" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="cart-product-box">
-                                 <children>
-                                    <Label styleClass="pro-price" text="Myanmar Beer" textFill="WHITE">
-                                       <font>
-                                          <Font name="Arial Narrow" size="37.0" />
-                                       </font>
-                                    </Label>
-                                    <Label styleClass="c-name" text="Drinks" />
-                                    <Label styleClass="pro-price" text="1700 MMK" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" styleClass="cart-product-box">
-                                 <children>
-                                    <Label styleClass="pro-price" text="Tiger Beer" textFill="WHITE">
-                                       <font>
-                                          <Font name="Arial Narrow" size="37.0" />
-                                       </font>
-                                    </Label>
-                                    <Label styleClass="c-name" text="Drinks" />
-                                    <Label styleClass="pro-price" text="2000 MMK" />
+                                    <HBox>
+                                       <children>
+                                          <SVGPath content="M9.891 9.862l-2.216 3.475-7.675-4.891 1.607-3.431 8.285 4.847zM10.047 11.022l-2.12 3.383-6.153-3.908v4.653l8.266 4.85 0.008-8.978zM10.793 11.022l2.12 3.383 6.153-3.908v4.653l-8.266 4.85-0.008-8.978zM10.676 9.869l2.327 3.51 8.059-4.941-1.687-3.465-8.699 4.896zM10.404 0l-8.21 4.487 8.215 4.801 8.254-4.8zM12.412 6.999l-1.977-2.024-2.004 2.026-0.502-0.522 1.963-1.988-1.963-2.008 0.487-0.501 2 1.977 1.997-1.979 0.529 0.513-2.009 2.005 1.985 1.981z" />
+                                          <Label styleClass="c-name" text="Out of stock" />
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
                            </children>
@@ -174,7 +81,7 @@
             </VBox>
          </children>
       </VBox>
-      <VBox styleClass="cart-view-frame" stylesheets="@application.css">
+      <VBox stylesheets="@application.css">
          <children>
             <GridPane hgap="5.0" vgap="5.0">
                <columnConstraints>
@@ -212,13 +119,13 @@
                   </HBox>
                </children>
             </GridPane>
-            <HBox styleClass="pad10-tb">
+            <HBox alignment="BOTTOM_LEFT">
                <children>
-                  <HBox HBox.hgrow="ALWAYS">
+                  <HBox styleClass="pad5-tb" HBox.hgrow="ALWAYS">
                      <children>
-                        <VBox onMouseClicked="#createNewInvoice">
+                        <VBox>
                            <children>
-                              <SVGPath content="M18 10h-4v-4c0-1.104-0.896-2-2-2s-2 0.896-2 2l0.071 4h-4.071c-1.104 0-2 0.896-2 2s0.896 2 2 2l4.071-0.071-0.071 4.071c0 1.104 0.896 2 2 2s2-0.896 2-2v-4.071l4 0.071c1.104 0 2-0.896 2-2s-0.896-2-2-2z" />
+                              <SVGPath content="M17.016 18q0.797 0 1.383 0.609t0.586 1.406-0.586 1.383-1.383 0.586-1.406-0.586-0.609-1.383 0.609-1.406 1.406-0.609zM0.984 2.016h3.281l0.938 1.969h14.813q0.422 0 0.703 0.305t0.281 0.727q0 0.047-0.141 0.469l-3.563 6.469q-0.563 1.031-1.734 1.031h-7.453l-0.891 1.641-0.047 0.141q0 0.234 0.234 0.234h11.578v2.016h-12q-0.797 0-1.383-0.609t-0.586-1.406q0-0.469 0.234-0.938l1.359-2.484-3.609-7.594h-2.016v-1.969zM6.984 18q0.797 0 1.406 0.609t0.609 1.406-0.609 1.383-1.406 0.586-1.383-0.586-0.586-1.383 0.586-1.406 1.383-0.609z" />
                            </children>
                            <styleClass>
                               <String fx:value="cart-add-btn" />
@@ -307,6 +214,14 @@
                </styleClass>
             </HBox>
          </children>
+         <styleClass>
+            <String fx:value="cart-view-frame" />
+            <String fx:value="pad10-rb" />
+         </styleClass>
       </VBox>
    </children>
+   <styleClass>
+      <String fx:value="view" />
+      <String fx:value="spac5" />
+   </styleClass>
 </HBox>

@@ -8,23 +8,28 @@ import java.util.stream.Collectors;
 import com.jdc.app.dao.CategoryDao;
 import com.jdc.app.entity.Category;
 import com.jdc.app.util.StringUtil;
+import com.jdc.app.util.ui.DeleteControllerFactory;
+import com.jdc.app.util.ui.EditControllerFactory;
 import com.jdc.app.util.ui.MessageBox;
-import com.jdc.app.util.ui.TableCellFactory;
 import com.jdc.app.util.ui.UIUtil;
+import com.jdc.app.util.ui.UpdateCellNode;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.util.Callback;
 
-public class CategoryManagement extends TableCellFactory<Category> {
+public class CategoryManagement implements EditControllerFactory, DeleteControllerFactory {
 
     @FXML
     private TextField txtName;
@@ -73,8 +78,37 @@ public class CategoryManagement extends TableCellFactory<Category> {
     	updateCol.setMinWidth(50);
     	updateCol.setPrefWidth(50);
     	updateCol.setMaxWidth(500);
-    	
-        updateCol.setCellFactory(this);
+        
+        updateCol.setCellFactory(new Callback<TableColumn<Category,Void>, TableCell<Category,Void>>() {
+			
+			@Override
+			public TableCell<Category, Void> call(TableColumn<Category, Void> param) {
+				final TableCell<Category, Void> cell = new TableCell<>() {
+
+					final UpdateCellNode n = new UpdateCellNode();
+					
+					{
+						n.setEditBox(new HBox());
+						n.setDeleteBox(new HBox());
+						
+						n.getEditBox().setOnMouseClicked(e -> edit());
+						n.getDeleteBox().setOnMouseClicked(e -> delete());
+					}
+					
+					@Override
+					public void updateItem(Void item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty) {
+							setGraphic(null);
+						} else {
+							setGraphic(n);
+						}
+					}
+				};
+				return cell;
+			}
+		});
+        
         tblCategoryList.getColumns().add(updateCol);
     }
     

@@ -13,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
@@ -22,7 +21,7 @@ public class SaleManagement {
     @FXML
     private TextField txtProduct;
     @FXML
-    private TilePane tileProboxHolder;
+    private TilePane tileProBoxHolder;
     @FXML
     private VBox searchBox;
     @FXML
@@ -61,17 +60,18 @@ public class SaleManagement {
     	proDao = ProductDao.getInstance();
 
     	UIUtil.setTooltip(searchBox, "Search products");
+    	
+    	search();
     }
 
     @FXML
-    void search(MouseEvent event) {
-    	tileProboxHolder.getChildren().clear();
+    void search() {
+    	tileProBoxHolder.getChildren().clear();
     	List<Product> list = proDao.find(txtProduct.getText(), txtProduct.getText(), TextFieldUtil.getPriceValue(txtProduct));
-    	list.stream().map(PosProductBox::new).forEach(tileProboxHolder.getChildren()::add);
+    	list.stream().map(p -> new PosProductBox(p, this::addToCart)).forEach(tileProBoxHolder.getChildren()::add);
     }
     
-    @FXML
-    void addToCart(MouseEvent event) {
+    private void addToCart(Product p) {
     	
     }
     
