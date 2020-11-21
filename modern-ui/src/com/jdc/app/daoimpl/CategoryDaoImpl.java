@@ -92,13 +92,14 @@ public class CategoryDaoImpl implements CategoryDao {
 	
 	@Override
 	public List<Category> findByName(String name) {
+		
 		List<Category> result = new ArrayList<>();
 		
 		try(Connection conn = DatabaseConnection.getDbConnection();
-				PreparedStatement stmt = conn.prepareStatement(StringUtil.isEmpty(name) ? SELECT : SELECT.concat(" and name like ?"))) {
+				PreparedStatement stmt = conn.prepareStatement(StringUtil.isEmpty(name) ? SELECT : SELECT.concat(" and lower(name) like ?"))) {
 			
 			if(!StringUtil.isEmpty(name))
-				stmt.setString(1, "%".concat(name.toLowerCase()).concat("%"));
+				stmt.setString(1, name.toLowerCase().concat("%"));
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next())
@@ -112,7 +113,7 @@ public class CategoryDaoImpl implements CategoryDao {
 	}
 	
 	@Override
-	public List<Category> getAll() {		
+	public List<Category> getAll() {
 		return findByName(null);
 	}
 	

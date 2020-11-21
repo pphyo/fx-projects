@@ -6,28 +6,23 @@ import java.util.List;
 
 import com.jdc.app.dao.ProductDao;
 import com.jdc.app.entity.Product;
-import com.jdc.app.util.ui.DeleteControllerFactory;
-import com.jdc.app.util.ui.EditControllerFactory;
 import com.jdc.app.util.ui.MessageBox;
+import com.jdc.app.util.ui.TableCellFactory;
 import com.jdc.app.util.ui.TextFieldUtil;
 import com.jdc.app.util.ui.UIUtil;
-import com.jdc.app.util.ui.UpdateCellNode;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.util.Callback;
 
-public class ProductManagement implements EditControllerFactory, DeleteControllerFactory{
+public class ProductManagement extends TableCellFactory<Product> {
 	
 	@FXML
 	private TextField txtParams;
@@ -64,35 +59,7 @@ public class ProductManagement implements EditControllerFactory, DeleteControlle
     	updateCol.setPrefWidth(50);
     	updateCol.setMaxWidth(500);
 		
-    	updateCol.setCellFactory(new Callback<TableColumn<Product,Void>, TableCell<Product,Void>>() {
-			
-			@Override
-			public TableCell<Product, Void> call(TableColumn<Product, Void> param) {
-				final TableCell<Product, Void> cell = new TableCell<>() {
-
-					final UpdateCellNode n = new UpdateCellNode();
-					
-					{
-						n.setEditBox(new HBox());
-						n.setDeleteBox(new HBox());
-						
-						n.getEditBox().setOnMouseClicked(e -> edit());
-						n.getDeleteBox().setOnMouseClicked(e -> delete());
-					}
-					
-					@Override
-					public void updateItem(Void item, boolean empty) {
-						super.updateItem(item, empty);
-						if (empty) {
-							setGraphic(null);
-						} else {
-							setGraphic(n);
-						}
-					}
-				};
-				return cell;
-			}
-		});
+    	updateCol.setCellFactory(this);
 		
 		tblProductList.getColumns().add(updateCol);
 		
@@ -138,6 +105,7 @@ public class ProductManagement implements EditControllerFactory, DeleteControlle
 		} catch(IOException e) {
 			MessageBox.showErrorBox(e, "File Error");
 		} catch(Exception e) {
+			e.printStackTrace();
 			MessageBox.showBox("No file selected!", "Nothing Select", AlertType.WARNING);
 		}
     	search();

@@ -1,5 +1,6 @@
 package com.jdc.app.util;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -7,8 +8,23 @@ import java.time.format.DateTimeFormatter;
 public class CommonUtil {
 	
 	private static final DateTimeFormatter DF = DateTimeFormatter.ofPattern("dd-MM-yyyy (E)");
+	private static final DateTimeFormatter CART_DF = DateTimeFormatter.ofPattern("E, MMM d yyyy");
 	private static final DateTimeFormatter TF = DateTimeFormatter.ofPattern("hh:mm a");
+	
+	private static final DecimalFormat DEC_FOR = new DecimalFormat("#,##0 MMK");
+	private static final DecimalFormat NO_MMK_DF = new DecimalFormat("#,##0 K");
 
+	public static String formatMMK(int data) {
+		if(data > 9999) {
+			return NO_MMK_DF.format(data / 1000);
+		}
+		return DEC_FOR.format(data);
+	}
+	
+	public static String formatCartDate(LocalDate date) {
+		return CART_DF.format(date);
+	}
+	
 	public static String format(LocalDate date) {
 		return DF.format(date);
 	}

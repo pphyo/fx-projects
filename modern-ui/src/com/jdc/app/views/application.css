@@ -221,8 +221,8 @@
 	-fx-pref-width: 220px;
 	-fx-pref-height: 130px;
 	-fx-background-color: #dcdcdc;
-	-fx-border-radius: 20px;
-	-fx-background-radius: 20px;
+	-fx-border-radius: 10px;
+	-fx-background-radius: 10px;
 	-fx-border-color: black;
 	-fx-border-width: 1px;
 	-fx-padding: 10px;
@@ -248,8 +248,14 @@
 	-fx-spacing: 10px;
 }
 
-.cart-product-box > HBox > Label {
+.stock {
 	-fx-text-fill: primary;
+	-fx-font-weight: bold;
+	-fx-font-size: 13px;
+}
+
+.out-stock {
+	-fx-text-fill: red;
 	-fx-font-weight: bold;
 	-fx-font-size: 13px;
 }
@@ -259,21 +265,150 @@
 	-fx-cursor: hand;
 }
 
-.cart-add-btn {
-	-fx-pref-width: 17px;
-	-fx-pref-height: 17px;
+.cart-tbl-header {
+	-fx-pref-height: 55px;
+	-fx-background-color: linear-gradient(to right top, #004d7a, #008793, #008793, #008793, #004d7a);
+	-fx-background-radius: 5 5 0 0;
 }
 
-.cart-add-btn > SVGPath {
-	-fx-fill: primary;
+.cart-tbl-header .lbl-1 {
+	-fx-text-fill: white;
+	-fx-font-size: 17px;
+	-fx-font-weight: bold;
+	-fx-font-family: "Arial";
 }
 
-.cart-add-btn:hover {
+.cart-tbl-header .lbl-2 {
+	-fx-text-fill: #dcdcdc;
+	-fx-font-size: 11px;
+	-fx-font-weight: bold;
+}
+
+.cart-tbl-row {
+	-fx-min-width: 343px;
+	-fx-pref-width: 343px;
+	-fx-max-width: 343px;
+	-fx-min-height: 60px;
+	-fx-pref-height: 60px;
+	-fx-max-height: 60px;
+	-fx-alignment: center-left;
+	-fx-border-color: silver;
+	-fx-border-width: 0 0 1 0;
+}
+
+.cart-tbl-row .delete-box {
+	-fx-alignment: center;
+	-fx-min-width: 32px;
+	-fx-pref-width: 32px;
+	-fx-max-width: 32px;
+}
+
+.cart-tbl-row .delete-box > SVGPath {
+	-fx-fill: red;
+}
+
+.cart-tbl-row .delete-box:hover {
 	-fx-cursor: hand;
 }
 
-.cart-add-btn:hover > SVGPath {
-	-fx-fill: silver;
+.cart-tbl-row .name-price-box {
+	-fx-min-width: 165px;
+	-fx-pref-width: 165px;
+	-fx-max-width: 165px;
+	-fx-alignment: center-left;
+	-fx-spacing: 5px;
+}
+
+.cart-tbl-row .tbl-row-pro-name {
+	-fx-text-fill: primary;
+	-fx-font-size: 14px;
+	-fx-font-weight: bold;
+	-fx-font-family: "JetBrains Mono";
+}
+
+.cart-tbl-row .tbl-row-font-prop {
+	-fx-text-fill: primary;
+	-fx-font-size: 12px;
+	-fx-font-weight: bold;
+	-fx-font-family: "JetBrains Mono";
+}
+
+.cart-tbl-row .qty-box {
+	-fx-min-height: 35px;
+	-fx-pref-height: 35px;
+	-fx-max-height: 35px;
+	-fx-min-width: 60px;
+	-fx-pref-width: 60px;
+	-fx-max-width: 60px;
+	-fx-border-color: primary;
+	-fx-border-width: 1px;
+	-fx-border-radius: 5px;
+	-fx-background-radius: 5px;
+}
+
+.cart-tbl-row .qty-lbl-box {
+	-fx-alignment: center;
+	-fx-min-width: 29px;
+	-fx-pref-width: 29px;
+	-fx-max-width: 29px;
+	-fx-border-radius: 5 0 0 5;
+	-fx-background-radius: 5 0 0 5;
+}
+
+.cart-tbl-row .qty-btn-plus {
+	-fx-pref-height: 25px;
+	-fx-min-width: 30px;
+	-fx-pref-width: 30px;
+	-fx-max-width: 30px;
+	-fx-alignment: center;
+	-fx-background-color: primary;
+	-fx-background-radius: 0 5 0 0;
+	-fx-border-radius: 0 5 0 0;
+	-fx-border-color: silver;
+	-fx-border-width: 0 0 1 0;
+}
+
+.cart-tbl-row .qty-btn-plus:hover {
+	-fx-cursor: hand;
+}
+
+.cart-tbl-row .qty-btn-lbl {
+	-fx-text-fill: white;
+	-fx-font-size: 12px;
+	-fx-font-weight: bold;
+	-fx-font-family: "JetBrains Mono";
+}
+
+.cart-tbl-row .qty-btn-minus {
+	-fx-pref-height: 25px;
+	-fx-min-width: 30px;
+	-fx-pref-width: 30px;
+	-fx-max-width: 30px;
+	-fx-alignment: center;
+	-fx-background-color: primary;
+	-fx-background-radius: 0 0 5 0;
+	-fx-border-radius: 0 0 5 0;
+	-fx-border-color: silver;
+	-fx-border-width: 1 0 0 0;
+}
+
+.cart-tbl-row .qty-btn-minus:hover {
+	-fx-cursor: hand;
+}
+
+.cart-tbl-row .qty-btn-plus:hover {
+	-fx-cursor: hand;
+}
+
+.cart-tbl-row .tot-box {
+	-fx-pref-width: 60px;
+	-fx-alignment: center-right;
+}
+
+.inv-list {
+	-fx-pref-width: 130px;
+	-fx-border-color: primary;
+	-fx-border-width: 1;
 }
 
 .cart-save {
@@ -295,8 +430,8 @@
 }
 
 .cart-save:hover > Label, .cart-save:hover > SVGPath {
-	-fx-fill: other;
-	-fx-text-fill: other;
+	-fx-fill: silver;
+	-fx-text-fill: silver;
 }
 
 .cart-save:hover {
@@ -475,10 +610,16 @@ TilePane {
     -fx-background-radius: 0em;
 }
 
-.scroll-bar:horizontal .thumb,
-.scroll-bar:vertical .thumb {
+.scroll-bar:horizontal .thumb {
     -fx-background-color: #C0C0C0;
     -fx-background-radius: 5em;
+    -fx-pref-height: 5px;
+}
+
+.scroll-bar:vertical .thumb {
+	-fx-background-color: #C0C0C0;
+    -fx-background-radius: 5em;
+	-fx-pref-width: 5px;
 }
 
 .table-view {

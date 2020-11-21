@@ -10,6 +10,7 @@ public class Product {
 	private String description;
 	private String creator;
 	private boolean stock;
+	private int noOfItem;
 	private Category category;
 	
 	public Product() {}
@@ -23,7 +24,7 @@ public class Product {
 		if(arr.length == 4)
 			description = "";
 		else
-			description = arr[5];
+			description = arr[4];
 	}
 
 	public int getId() {
@@ -74,6 +75,14 @@ public class Product {
 		this.stock = stock;
 	}
 
+	public int getNoOfItem() {
+		return noOfItem;
+	}
+	
+	public void setNoOfItem(int noOfItem) {
+		this.noOfItem = noOfItem;
+	}
+	
 	public Category getCategory() {
 		return category;
 	}

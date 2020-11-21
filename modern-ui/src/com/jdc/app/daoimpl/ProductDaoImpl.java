@@ -148,7 +148,7 @@ public class ProductDaoImpl implements ProductDao {
 	}
 	
 	public void upload(File file) throws IOException {
-		Files.lines(file.toPath()).map(Product::new).forEach(this::save);
+		Files.lines(file.toPath()).skip(1).map(Product::new).forEach(this::save);
 	};
 	
 	private Product getProductObject(ResultSet rs) throws SQLException {
