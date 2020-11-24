@@ -92,7 +92,6 @@ public class ProductEdit implements ModalController<Product> {
 			
 			
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
 			MessageBox.showErrorBox(e, "Error Occured");
 		} catch (Exception e) {
 			MessageBox.showErrorBox(e, "Error Occured");

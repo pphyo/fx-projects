@@ -99,7 +99,6 @@ public class ProductDaoImpl implements ProductDao {
 					try(PreparedStatement nameStmt = conn.prepareStatement(productSql)) {
 
 						nameStmt.setString(1, product.toLowerCase().concat("%"));
-
 						rs = nameStmt.executeQuery();
 						
 						while(rs.next())
@@ -116,7 +115,6 @@ public class ProductDaoImpl implements ProductDao {
 					try(PreparedStatement priceStmt = conn.prepareStatement(priceSql)) {
 						
 						priceStmt.setInt(1, price);
-						
 						rs = priceStmt.executeQuery();
 						
 						while(rs.next())

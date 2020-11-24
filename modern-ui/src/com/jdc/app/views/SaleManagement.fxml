@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
@@ -26,26 +25,21 @@
                   <String fx:value="search-bar" />
                </styleClass>
                <children>
-                  <Pane HBox.hgrow="ALWAYS">
+                  <HBox prefHeight="57.0">
                      <children>
-                        <HBox layoutY="11.0" prefHeight="57.0" prefWidth="490.0">
+                        <TextField fx:id="txtProduct" promptText="Search for products" styleClass="wid500" />
+                        <VBox fx:id="searchBox" onMouseClicked="#search" prefHeight="34.0" prefWidth="18.0" styleClass="ali-c">
                            <children>
-                              <TextField fx:id="txtProduct" promptText="Search for products" styleClass="wid500" />
-                              <VBox fx:id="searchBox" onMouseClicked="#search" prefHeight="34.0" prefWidth="18.0" styleClass="ali-c">
-                                 <children>
-                                    <SVGPath content="M9.516 14.016q1.875 0 3.188-1.313t1.313-3.188-1.313-3.188-3.188-1.313-3.188 1.313-1.313 3.188 1.313 3.188 3.188 1.313zM15.516 14.016l4.969 4.969-1.5 1.5-4.969-4.969v-0.797l-0.281-0.281q-1.781 1.547-4.219 1.547-2.719 0-4.617-1.875t-1.898-4.594 1.898-4.617 4.617-1.898 4.594 1.898 1.875 4.617q0 0.984-0.469 2.227t-1.078 1.992l0.281 0.281h0.797z" />
-                                 </children>
-                              </VBox>
+                              <SVGPath content="M9.516 14.016q1.875 0 3.188-1.313t1.313-3.188-1.313-3.188-3.188-1.313-3.188 1.313-1.313 3.188 1.313 3.188 3.188 1.313zM15.516 14.016l4.969 4.969-1.5 1.5-4.969-4.969v-0.797l-0.281-0.281q-1.781 1.547-4.219 1.547-2.719 0-4.617-1.875t-1.898-4.594 1.898-4.617 4.617-1.898 4.594 1.898 1.875 4.617q0 0.984-0.469 2.227t-1.078 1.992l0.281 0.281h0.797z" />
                            </children>
-                           <styleClass>
-                              <String fx:value="ali-c" />
-                              <String fx:value="search-box" />
-                              <String fx:value="spac5" />
-                              <String fx:value="pad10-r" />
-                           </styleClass>
-                        </HBox>
+                        </VBox>
                      </children>
-                  </Pane>
+                     <styleClass>
+                        <String fx:value="ali-c" />
+                        <String fx:value="search-box" />
+                        <String fx:value="spac5" />
+                     </styleClass>
+                  </HBox>
                </children>
             </HBox>
             <VBox styleClass="pad10-bl" VBox.vgrow="ALWAYS">
@@ -99,31 +93,47 @@
                   </HBox>
                   <HBox styleClass="txt-fld" GridPane.columnIndex="1">
                      <children>
-                        <SVGPath content="M12 14.016q1.031 0 2.203-0.633t1.781-1.523q0-0.891-1.383-1.477t-2.602-0.586-2.602 0.586-1.383 1.477q1.406 2.156 3.984 2.156zM12 3.984q-0.844 0-1.43 0.586t-0.586 1.43 0.586 1.43 1.43 0.586 1.43-0.586 0.586-1.43-0.586-1.43-1.43-0.586zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z" />
-                        <TextField fx:id="txtcustAddress" promptText="Address" />
+                        <VBox>
+                           <children>
+                              <SVGPath content="M12 14.016q1.031 0 2.203-0.633t1.781-1.523q0-0.891-1.383-1.477t-2.602-0.586-2.602 0.586-1.383 1.477q1.406 2.156 3.984 2.156zM12 3.984q-0.844 0-1.43 0.586t-0.586 1.43 0.586 1.43 1.43 0.586 1.43-0.586 0.586-1.43-0.586-1.43-1.43-0.586zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="txt-icon-box" />
+                              <String fx:value="ali-c" />
+                           </styleClass>
+                        </VBox>
+                        <TextField fx:id="txtCustAddress" promptText="Address" />
                      </children>
                   </HBox>
                   <HBox styleClass="txt-fld" GridPane.rowIndex="1">
                      <children>
                         <SVGPath content="M6.609 10.781q2.25 4.359 6.609 6.609l2.203-2.203q0.469-0.469 1.031-0.234 1.688 0.563 3.563 0.563 0.422 0 0.703 0.281t0.281 0.703v3.516q0 0.422-0.281 0.703t-0.703 0.281q-7.031 0-12.023-4.992t-4.992-12.023q0-0.422 0.281-0.703t0.703-0.281h3.516q0.422 0 0.703 0.281t0.281 0.703q0 1.875 0.563 3.563 0.188 0.609-0.234 1.031z" />
-                        <TextField fx:id="txtcustPhone" promptText="Phone no" />
+                        <TextField fx:id="txtCustPhone" promptText="Phone no" />
                      </children>
                   </HBox>
                   <HBox styleClass="txt-fld" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <SVGPath content="M14.016 2.016h-8.016q-0.844 0-1.406 0.586t-0.563 1.383l-0.047 16.031q0 0.797 0.586 1.383t1.43 0.586h12q0.844 0 1.43-0.586t0.586-1.383v-12zM15 12h-3.984v0.984h3q0.375 0 0.68 0.305t0.305 0.727v3q0 0.375-0.305 0.68t-0.68 0.305h-1.031v0.984h-1.969v-0.984h-2.016v-2.016h3.984v-0.984h-3q-0.375 0-0.68-0.305t-0.305-0.68v-3q0-0.422 0.305-0.727t0.68-0.305h1.031v-0.984h1.969v0.984h2.016v2.016zM12.984 8.016v-4.5l4.5 4.5h-4.5z" />
-                        <TextField fx:id="txtTax" promptText="Enter tax (Percent)" />
+                        <VBox>
+                           <children>
+                              <SVGPath content="M19.883 7.266l-1.049-1.399-0.583 4.082c-0.053 0.374-0.23 0.727-0.497 0.994l-7.182 7.182c-0.626 0.626-1.46 0.972-2.348 0.972-0.265 0-0.526-0.031-0.777-0.091 0.382 0.597 1.051 0.994 1.811 0.994h8.594c1.185 0 2.148-0.964 2.148-2.148v-10.234c0-0.127-0.041-0.25-0.117-0.352zM12.677 9.149c0 0.324-0.262 0.586-0.586 0.586s-0.586-0.262-0.586-0.586c0-0.324 0.262-0.586 0.586-0.586s0.586 0.262 0.586 0.586zM6.048 9.149c0 0.324-0.262 0.586-0.586 0.586s-0.586-0.262-0.586-0.586c0-0.324 0.262-0.586 0.586-0.586s0.586 0.262 0.586 0.586zM9.743 17.297l7.182-7.182c0.090-0.090 0.148-0.206 0.166-0.331l0.829-5.801c0.026-0.183-0.035-0.367-0.166-0.497l-1.243-1.243-1.657 1.657 0.414 0.414c0.229 0.229 0.229 0.6 0 0.829-0.114 0.114-0.264 0.172-0.414 0.172s-0.3-0.057-0.414-0.172l-1.657-1.657c-0.229-0.229-0.229-0.6 0-0.829s0.6-0.229 0.829 0l0.414 0.414 1.657-1.657-1.243-1.243c-0.13-0.13-0.315-0.192-0.497-0.166l-5.801 0.829c-0.126 0.018-0.242 0.076-0.331 0.166l-7.182 7.182c-0.838 0.838-0.838 2.201 0 3.038l6.077 6.077c0.419 0.419 0.969 0.628 1.519 0.628s1.1-0.209 1.519-0.628zM12.091 7.391c0.969 0 1.758 0.789 1.758 1.758s-0.789 1.758-1.758 1.758-1.758-0.789-1.758-1.758 0.789-1.758 1.758-1.758zM5.462 10.906c-0.969 0-1.758-0.789-1.758-1.758s0.789-1.758 1.758-1.758 1.758 0.789 1.758 1.758-0.789 1.758-1.758 1.758zM7.396 13.878c-0.061 0-0.124-0.010-0.185-0.030-0.307-0.102-0.473-0.434-0.371-0.741l2.762-8.286c0.102-0.307 0.434-0.473 0.741-0.371s0.473 0.434 0.371 0.741l-2.762 8.286c-0.082 0.245-0.311 0.401-0.556 0.401zM17.753 1c0.229-0.229 0.229-0.6 0-0.829s-0.6-0.229-0.829 0l-1.243 1.243 0.829 0.829z" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="txt-icon-box" />
+                              <String fx:value="ali-c" />
+                           </styleClass>
+                        </VBox>
+                        <TextField fx:id="txtTax" promptText="Discount (Percent)" />
                      </children>
                   </HBox>
                </children>
             </GridPane>
             <HBox alignment="BOTTOM_LEFT">
                <children>
-                  <HBox styleClass="pad5-tb" HBox.hgrow="ALWAYS">
+                  <HBox alignment="BOTTOM_LEFT" styleClass="pad5-tb" HBox.hgrow="ALWAYS">
                      <children>
-                        <VBox fx:id="newInvoiceBox" onMouseClicked="#createNewInvoice">
+                        <VBox>
                            <children>
-                              <ComboBox prefWidth="150.0" promptText="Select Invoice" />
+                              <ComboBox fx:id="cbxInvoice" prefWidth="150.0" promptText="Select Invoice" />
                            </children>
                            <styleClass>
                               <String fx:value="inv-list" />
@@ -155,7 +165,7 @@
                   </ScrollPane>
                </children>
             </VBox>
-            <GridPane hgap="5.0" styleClass="bg-white" vgap="5.0">
+            <GridPane hgap="5.0" vgap="5.0">
                <columnConstraints>
                   <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -186,6 +196,10 @@
                      </styleClass>
                   </Label>
                </children>
+               <styleClass>
+                  <String fx:value="bg-white" />
+                  <String fx:value="pad10-r" />
+               </styleClass>
             </GridPane>
             <HBox>
                <children>

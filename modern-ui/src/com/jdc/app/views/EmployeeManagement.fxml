@@ -1,8 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<VBox styleClass="view" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.app.views.EmployeeManagement">
+   <children>
+      <HBox>
+         <children>
+            <HBox>
+               <children>
+                  <TextField fx:id="txtParams" promptText="Search by" styleClass="wid180" />
+                  <VBox fx:id="searchBox" onMouseClicked="#search" styleClass="ali-c">
+                     <children>
+                        <SVGPath content="M9.516 14.016q1.875 0 3.188-1.313t1.313-3.188-1.313-3.188-3.188-1.313-3.188 1.313-1.313 3.188 1.313 3.188 3.188 1.313zM15.516 14.016l4.969 4.969-1.5 1.5-4.969-4.969v-0.797l-0.281-0.281q-1.781 1.547-4.219 1.547-2.719 0-4.617-1.875t-1.898-4.594 1.898-4.617 4.617-1.898 4.594 1.898 1.875 4.617q0 0.984-0.469 2.227t-1.078 1.992l0.281 0.281h0.797z" />
+                     </children>
+                  </VBox>
+               </children>
+               <styleClass>
+                  <String fx:value="search-box" />
+                  <String fx:value="ali-cl" />
+                  <String fx:value="spac5" />
+               </styleClass>
+            </HBox>
+            <VBox fx:id="addBox" onMouseClicked="#add">
+               <children>
+                  <SVGPath content="M18 10h-4v-4c0-1.104-0.896-2-2-2s-2 0.896-2 2l0.071 4h-4.071c-1.104 0-2 0.896-2 2s0.896 2 2 2l4.071-0.071-0.071 4.071c0 1.104 0.896 2 2 2s2-0.896 2-2v-4.071l4 0.071c1.104 0 2-0.896 2-2s-0.896-2-2-2z" />
+               </children>
+               <styleClass>
+                  <String fx:value="icon-box" />
+                  <String fx:value="ali-c" />
+               </styleClass>
+            </VBox>
+         </children>
+         <styleClass>
+            <String fx:value="search-bar" />
+            <String fx:value="ali-cl" />
+            <String fx:value="pad10-rl" />
+            <String fx:value="spac10" />
+         </styleClass>
+      </HBox>
+      <VBox styleClass="pad10-rbl" VBox.vgrow="ALWAYS">
+         <children>
+            <TableView fx:id="tblEmployeeList" editable="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn maxWidth="2000.0" minWidth="70.0" prefWidth="100.0" text="Name">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="username" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn maxWidth="500.0" minWidth="70.0" prefWidth="100.0" text="Role">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="role" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn maxWidth="1000.0" minWidth="30.0" prefWidth="50.0" text="salary">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="salary" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn maxWidth="1000.0" minWidth="70.0" prefWidth="100.0" text="Phone">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="phone" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn maxWidth="2000.0" minWidth="70.0" prefWidth="100.0" text="Address">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="address" />
+                     </cellValueFactory>
+                  </TableColumn>
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
 </VBox>
-

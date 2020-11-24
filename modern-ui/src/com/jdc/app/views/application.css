@@ -212,8 +212,7 @@
 }
 
 .cart-view-frame {
-	-fx-pref-width: 360px;
-	-fx-pref-height: 560px;
+	-fx-pref-width: 375px;
 }
 
 .cart-product-box {
@@ -323,7 +322,7 @@
 	-fx-text-fill: primary;
 	-fx-font-size: 14px;
 	-fx-font-weight: bold;
-	-fx-font-family: "JetBrains Mono";
+	-fx-font-family: "Cascadia Code PL";
 }
 
 .cart-tbl-row .tbl-row-font-prop {
@@ -406,7 +405,7 @@
 }
 
 .inv-list {
-	-fx-pref-width: 130px;
+	-fx-pref-width: 140px;
 	-fx-border-color: primary;
 	-fx-border-width: 1;
 }
@@ -501,6 +500,12 @@
     -fx-fill: primary
 }
 
+.txt-fld .txt-icon-box {
+	-fx-min-width: 22px;
+	-fx-pref-width: 22px;
+	-fx-max-width: 22px;
+}
+
 .text-area {
 	-fx-pref-width: 178px;
 	-fx-prompt-text-fill: primary;
@@ -524,7 +529,9 @@
 	-fx-background-color: silver;
 	-fx-background-radius: 5px;
 	-fx-border-radius: 5px;
+	-fx-min-height: 32px;
 	-fx-pref-height: 32px;
+	-fx-max-height: 32px;
 }
 
 .search-box > .text-field {
@@ -536,7 +543,9 @@
 	-fx-background-color: silver;
 	-fx-background-radius: 5px;
 	-fx-border-radius: 5px;
+	-fx-min-height: 32px;
 	-fx-pref-height: 32px;
+	-fx-max-height: 32px;
 	-fx-pref-width: 30px;
 }
 
@@ -568,10 +577,11 @@
 }
 
 .date-picker {
+	-fx-min-height: 32px;
+	-fx-pref-height: 32px;
+	-fx-max-height: 32px;
 	-fx-pref-width: 150px;
 	-fx-background-color: transparent;
-	-fx-border-color: primary;
-	-fx-border-width: 0 0 1 0;
 }
 
 .date-picker > .text-field {
@@ -581,8 +591,16 @@
 
 .date-picker > .arrow-button {
 	-fx-background-color: transparent;
+}
+
+.bw-rb {
 	-fx-border-color: primary;
-	-fx-border-width: 0 1 0 0;
+	-fx-border-width: 0 1 1 0;
+}
+
+.bw-bl {
+	-fx-border-color: primary;
+	-fx-border-width: 0 0 1 1;
 }
 
 TilePane {
@@ -740,7 +758,7 @@ TilePane {
 }
 
 .wid500 {
-	-fx-pref-width: 500px;
+	-fx-pref-width: 435px;
 }
 
 .ali-c {

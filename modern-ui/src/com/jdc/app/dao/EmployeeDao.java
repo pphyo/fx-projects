@@ -12,9 +12,10 @@ public interface EmployeeDao {
 		return new EmployeeDaoImpl();
 	}
 	
-	void save(Employee e);
-	void delete(Employee e);
-	List<Employee> find(String name, int salary, Role role);
+	void save(Employee emp);
+	void delete(Employee emp);
+	List<Employee> find(String name, int salary, String role);
 	List<Employee> getAll();
+	Employee getOne(String id, String password);
 
 }

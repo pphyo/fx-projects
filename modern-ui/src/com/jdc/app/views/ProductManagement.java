@@ -14,7 +14,6 @@ import com.jdc.app.util.ui.UIUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -46,7 +45,6 @@ public class ProductManagement extends TableCellFactory<Product> {
 		UIUtil.setTooltip(uploadBox, "Upload products from file");
 		
 		tblProductList.setPlaceholder(new Label("There is no product in the table."));
-		tblProductList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
 		search();
 		createUpdateCol();
@@ -74,14 +72,14 @@ public class ProductManagement extends TableCellFactory<Product> {
 	
 	@Override
 	public void delete() {
-		List<Product> list = tblProductList.getSelectionModel().getSelectedItems();
-		list.stream().forEach(proDao::delete);
+		Product p = tblProductList.getSelectionModel().getSelectedItem();
+		proDao.delete(p);
 		search();
 	}
 	
 	public void search() {
 		tblProductList.getItems().clear();
-		List<Product> list = proDao.find(txtParams.getText().toLowerCase(), txtParams.getText().toLowerCase(), TextFieldUtil.getPriceValue(txtParams));
+		List<Product> list = proDao.find(txtParams.getText(), txtParams.getText(), TextFieldUtil.getPriceValue(txtParams));
 		tblProductList.getItems().addAll(list);
 	}
 	
