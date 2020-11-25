@@ -5,7 +5,6 @@ import java.util.function.Consumer;
 import com.jdc.app.PosException;
 import com.jdc.app.entity.Category;
 import com.jdc.app.util.StringUtil;
-import com.jdc.app.util.ui.MessageBox;
 import com.jdc.app.util.ui.UIUtil.ModalController;
 
 import javafx.fxml.FXML;
@@ -36,7 +35,7 @@ public class CategoryEdit implements ModalController<Category> {
 			close();
 			
 		} catch (Exception e) {
-			MessageBox.showErrorBox(e, "Error Occured");
+			MessageBox.show(e.getMessage(), false);
 		}
 	}
 	

@@ -16,7 +16,7 @@ public class PosProductBox extends VBox {
 	public PosProductBox(Product p, Consumer<Product> clickListener) {
 		Label product = new Label(p.getName());
 		Label category = new Label(p.getCategory().getName());
-		Label price = new Label(CommonUtil.formatMMK(p.getPrice()));
+		Label price = new Label(CommonUtil.formatLakh(p.getPrice()));
 		
 		product.getStyleClass().add("pro-price");
 		category.getStyleClass().add("c-name");

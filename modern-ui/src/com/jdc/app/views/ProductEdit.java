@@ -7,7 +7,6 @@ import com.jdc.app.dao.CategoryDao;
 import com.jdc.app.entity.Category;
 import com.jdc.app.entity.Product;
 import com.jdc.app.util.StringUtil;
-import com.jdc.app.util.ui.MessageBox;
 import com.jdc.app.util.ui.UIUtil.ModalController;
 
 import javafx.fxml.FXML;
@@ -16,6 +15,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 
 public class ProductEdit implements ModalController<Product> {
@@ -43,6 +43,13 @@ public class ProductEdit implements ModalController<Product> {
 	private void initialize() {
 		catDao = CategoryDao.getInstance();
 		cbxCategory.getItems().addAll(catDao.getAll());
+		
+		grdNode.setOnKeyPressed(e -> {
+			if(e.getCode() == KeyCode.ENTER)
+				save();
+			if(e.getCode() == KeyCode.ESCAPE)
+				close();
+		});
 		
 		chkStock.setSelected(true);
 		stockText();
@@ -92,9 +99,9 @@ public class ProductEdit implements ModalController<Product> {
 			
 			
 		} catch (NumberFormatException e) {
-			MessageBox.showErrorBox(e, "Error Occured");
+			MessageBox.show("Please enter digit only for price!", false);
 		} catch (Exception e) {
-			MessageBox.showErrorBox(e, "Error Occured");
+			MessageBox.show(e.getMessage(), false);
 		}
 	}
 	

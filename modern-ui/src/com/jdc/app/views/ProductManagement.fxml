@@ -70,7 +70,7 @@
                   </TableColumn>
                   <TableColumn maxWidth="1000.0" minWidth="30.0" prefWidth="50.0" text="Price">
                      <cellValueFactory>
-                        <PropertyValueFactory property="price" />
+                        <PropertyValueFactory property="priceWithFormat" />
                      </cellValueFactory>
                   </TableColumn>
                   <TableColumn maxWidth="2000.0" minWidth="70.0" prefWidth="100.0" text="Description">

@@ -20,8 +20,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public void save(Employee emp) {
-		String insertSql = "insert into employee (login_id, login_password, username, role, salary, phone, address) values (?, ?, ?, ?, ?, ?, ?)";
-		String updateSql = "update employee set login_id = ?, login_password = ?, username = ?, role = ?, salary = ?, phone = ?, address = ? where id = ?";
+		String insertSql = "insert into employee (login_id, login_password, username, role, salary, phone) values (?, ?, ?, ?, ?, ?)";
+		String updateSql = "update employee set login_id = ?, login_password = ?, username = ?, role = ?, salary = ?, phone = ? where id = ?";
 		
 		boolean isNew = emp.getId() == 0;
 		
@@ -34,9 +34,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			stmt.setString(4, emp.getRole().toString());
 			stmt.setInt(5, emp.getSalary());
 			stmt.setString(6, emp.getPhone());
-			stmt.setString(7, emp.getAddress());
 			if(!isNew)
-				stmt.setInt(8, emp.getId());
+				stmt.setInt(7, emp.getId());
 			
 			stmt.executeUpdate();
 			
@@ -106,7 +105,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 					String roleSql = SELECT.concat(" and lower(role) like ?");
 					
 					try(PreparedStatement roleStmt = conn.prepareStatement(roleSql)) {
-						roleStmt.setString(1, role.toLowerCase());
+						roleStmt.setString(1, role.toLowerCase().concat("%"));
 						rs = roleStmt.executeQuery();
 						
 						while(rs.next())
@@ -165,7 +164,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		emp.setRole(Role.valueOf(rs.getString("role")));
 		emp.setSalary(rs.getInt("salary"));
 		emp.setPhone(rs.getString("phone"));
-		emp.setAddress(rs.getString("address"));
 		return emp;
 	}
 

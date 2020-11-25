@@ -5,11 +5,11 @@ import com.jdc.app.dao.EmployeeDao;
 import com.jdc.app.entity.Employee;
 import com.jdc.app.util.Security;
 import com.jdc.app.util.StringUtil;
-import com.jdc.app.util.ui.MessageBox;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 
 public class Login {
@@ -22,7 +22,12 @@ public class Login {
 	private GridPane grdNode;
 	
 	public void initialize() {
-		
+		grdNode.setOnKeyPressed(e -> {
+			if(e.getCode() == KeyCode.ENTER)
+				login();
+			if(e.getCode() == KeyCode.ESCAPE)
+				close();
+		});
 	}
 	
 	public void login() {
@@ -34,7 +39,7 @@ public class Login {
 			if(StringUtil.isEmpty(txtLoginPassword.getText()))
 				throw new PosException("Please enter login password!");
 			
-			Employee emp = EmployeeDao.getInstance().getOne(txtLoginId.getText(), Security.encodePassword(txtLoginPassword.getText()));
+			Employee emp = EmployeeDao.getInstance().getOne(txtLoginId.getText(), txtLoginPassword.getText());
 			
 			if(null == emp)
 				throw new PosException("User not found!");
@@ -43,7 +48,7 @@ public class Login {
 			RootFrame.show();
 			close();
 		} catch (Exception e) {
-			MessageBox.showErrorBox(e, "Login Error");
+			MessageBox.show(e.getMessage(), true);
 		}
 	}
 	

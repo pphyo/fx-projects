@@ -6,13 +6,11 @@ import java.util.List;
 
 import com.jdc.app.dao.ProductDao;
 import com.jdc.app.entity.Product;
-import com.jdc.app.util.ui.MessageBox;
 import com.jdc.app.util.ui.TableCellFactory;
 import com.jdc.app.util.ui.TextFieldUtil;
 import com.jdc.app.util.ui.UIUtil;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -101,10 +99,9 @@ public class ProductManagement extends TableCellFactory<Product> {
         	File file = fc.showOpenDialog(txtParams.getScene().getWindow());
         	proDao.upload(file);
 		} catch(IOException e) {
-			MessageBox.showErrorBox(e, "File Error");
+			MessageBox.show(e.getMessage(), true);
 		} catch(Exception e) {
-			e.printStackTrace();
-			MessageBox.showBox("No file selected!", "Nothing Select", AlertType.WARNING);
+			MessageBox.show("No file selected!", false);
 		}
     	search();
 	}

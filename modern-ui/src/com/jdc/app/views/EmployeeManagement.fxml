@@ -61,17 +61,12 @@
                   </TableColumn>
                   <TableColumn maxWidth="1000.0" minWidth="30.0" prefWidth="50.0" text="salary">
                      <cellValueFactory>
-                        <PropertyValueFactory property="salary" />
+                        <PropertyValueFactory property="salaryWithFormat" />
                      </cellValueFactory>
                   </TableColumn>
                   <TableColumn maxWidth="1000.0" minWidth="70.0" prefWidth="100.0" text="Phone">
                      <cellValueFactory>
                         <PropertyValueFactory property="phone" />
-                     </cellValueFactory>
-                  </TableColumn>
-                  <TableColumn maxWidth="2000.0" minWidth="70.0" prefWidth="100.0" text="Address">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="address" />
                      </cellValueFactory>
                   </TableColumn>
                </columns>

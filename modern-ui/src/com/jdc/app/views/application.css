@@ -582,6 +582,8 @@
 	-fx-max-height: 32px;
 	-fx-pref-width: 150px;
 	-fx-background-color: transparent;
+	-fx-border-color: primary;
+	-fx-border-width: 0 1 1 0;
 }
 
 .date-picker > .text-field {
@@ -591,16 +593,6 @@
 
 .date-picker > .arrow-button {
 	-fx-background-color: transparent;
-}
-
-.bw-rb {
-	-fx-border-color: primary;
-	-fx-border-width: 0 1 1 0;
-}
-
-.bw-bl {
-	-fx-border-color: primary;
-	-fx-border-width: 0 0 1 1;
 }
 
 TilePane {
@@ -744,9 +736,31 @@ TilePane {
 	-fx-pref-height: 500px;
 }
 
+.emp-vw-fr {
+	-fx-pref-width: 600px;
+	-fx-pref-height: 550px;
+}
+
 .lg-vw-fr {
 	-fx-pref-width: 600px;
 	-fx-pref-height: 400px;
+}
+
+.mb-vw-fr {
+	-fx-background-color: #CCCCCC;
+	-fx-pref-width: 450px;
+	-fx-pref-height: 200px;
+}
+
+.img-vw {
+	-fx-fit-to-width: 130px;
+	-fx-fit-to-height: 130px;
+}
+
+.mb-fp {
+	-fx-text-fill: primary;
+	-fx-font-size: 13px;
+	-fx-font-family: "JetBrains Mono";
 }
 
 .wid20 {
@@ -759,6 +773,10 @@ TilePane {
 
 .wid500 {
 	-fx-pref-width: 435px;
+}
+
+.ali-cr {
+	-fx-alignment: center-right;
 }
 
 .ali-c {
@@ -783,6 +801,10 @@ TilePane {
 
 .spac30 {
 	-fx-spacing: 30px;
+}
+
+.pad15-t {
+	-fx-padding: 15 0 0 0;
 }
 
 .pad10 {

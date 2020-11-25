@@ -22,13 +22,11 @@ import com.jdc.app.util.CommonUtil;
 import com.jdc.app.util.StringUtil;
 import com.jdc.app.util.Validation;
 import com.jdc.app.util.ui.CartTableRow;
-import com.jdc.app.util.ui.MessageBox;
 import com.jdc.app.util.ui.PosProductBox;
 import com.jdc.app.util.ui.TextFieldUtil;
 import com.jdc.app.util.ui.UIUtil;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -141,11 +139,10 @@ public class SaleManagement {
             	tblRowContainer.getChildren().add(row);
             	
         	} else {
-        		MessageBox.showBox("Product you selected is already in cart!", "Alerady have", AlertType.WARNING);        		
+        		MessageBox.show("Product you selected is already in cart!", false);        		
         	}
 		} catch (Exception e) {
-			e.printStackTrace();
-			MessageBox.showBox(e.getMessage(), "Out of Stock", AlertType.WARNING);
+			MessageBox.show(e.getMessage(), false);
 		}
     	
     	calculate();
@@ -195,8 +192,8 @@ public class SaleManagement {
     	
     	int total = discount > 0 ? (subTotal / discount) + tax : subTotal + tax;
     	
-    	lblSubTotal.setText(String.valueOf(subTotal));
-    	lblTotal.setText(String.valueOf(total));
+    	lblSubTotal.setText(CommonUtil.noFormatMMK(subTotal));
+    	lblTotal.setText(CommonUtil.noFormatMMK(total));
     }
     
     private void prepareCart() {
@@ -218,7 +215,10 @@ public class SaleManagement {
     		if(null == dto) {
     			dto = new SaleDTO();
     			
-    			customer = dto.getCustomer();
+    			if(null == cbxInvoice.getValue())
+    				customer = dto.getCustomer();
+    			else
+    				customer = cbxInvoice.getValue();
     		
 	    		Validation.validate(txtCustName.getText(), "Please enter customer name!");
 	    		
@@ -227,15 +227,15 @@ public class SaleManagement {
 	    		customer.setPhone(txtCustPhone.getText());
     		}
     		
-    		if(!customer.getName().equals(txtCustName.getText())) {
-    			customer.setName(txtCustName.getText());
-    		}
-    		if(!customer.getAddress().equals(txtCustAddress.getText())) {
-    			customer.setAddress(txtCustAddress.getText());
-    		}
-    		if(!customer.getPhone().equals(txtCustPhone.getText())) {
-    			customer.setPhone(txtCustPhone.getText());
-    		}
+//    		if(!customer.getName().equals(txtCustName.getText())) {
+//    			customer.setName(txtCustName.getText());
+//    		}
+//    		if(!customer.getAddress().equals(txtCustAddress.getText())) {
+//    			customer.setAddress(txtCustAddress.getText());
+//    		}
+//    		if(!customer.getPhone().equals(txtCustPhone.getText())) {
+//    			customer.setPhone(txtCustPhone.getText());
+//    		}
     		
            	Validation.validate(rowList, "At least one product in the cart!");
            	
@@ -243,7 +243,6 @@ public class SaleManagement {
            	List<CartTableRow<SaleOrder>> temp = new LinkedList<>();
        		temp.addAll(rowList);
        		
-       		//find value with
        		if(unpaidInvoiceList.containsKey(customer)) {
        			unpaidInvoiceList.replace(customer, temp);
        		} else {
@@ -254,7 +253,7 @@ public class SaleManagement {
            	prepareCart();
         	
 		} catch (Exception e) {
-			MessageBox.showBox(e.getMessage(), "Cart Message", AlertType.INFORMATION);
+			MessageBox.show(e.getMessage(), false);
 		}
 	}
     
@@ -326,10 +325,10 @@ public class SaleManagement {
            	invoice.setCustomer(customer);
            	invoice.setInvoiceDate(LocalDate.now());
            	invoice.setInvoiceTime(LocalTime.now());
-           	invoice.setSubTotal(Integer.parseInt(lblSubTotal.getText()));
-           	invoice.setTax(Integer.parseInt(lblTax.getText()));
-           	invoice.setDiscount(Integer.parseInt(lblDiscount.getText()));
-           	invoice.setTotal(Integer.parseInt(lblTotal.getText()));
+           	invoice.setSubTotal(Integer.parseInt(lblSubTotal.getText().replace(",", "")));
+           	invoice.setTax(Integer.parseInt(lblTax.getText().replace(",", "")));
+           	invoice.setDiscount(Integer.parseInt(lblDiscount.getText().replace(",", "")));
+           	invoice.setTotal(Integer.parseInt(lblTotal.getText().replace(",", "")));
            	
            	dto.getOrderList().clear();
            	dto.getOrderList().addAll(orderList);
@@ -339,7 +338,7 @@ public class SaleManagement {
            	prepareCart();
         	
 		} catch (Exception e) {
-			MessageBox.showBox(e.getMessage(), "Cart Message", AlertType.INFORMATION);
+			MessageBox.show(e.getMessage(), false);
 		}
 	}
 

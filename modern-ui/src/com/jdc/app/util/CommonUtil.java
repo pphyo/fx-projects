@@ -11,14 +11,22 @@ public class CommonUtil {
 	private static final DateTimeFormatter CART_DF = DateTimeFormatter.ofPattern("E, MMM d yyyy");
 	private static final DateTimeFormatter TF = DateTimeFormatter.ofPattern("hh:mm a");
 	
-	private static final DecimalFormat DEC_FOR = new DecimalFormat("#,##0 MMK");
-	private static final DecimalFormat NO_MMK_DF = new DecimalFormat("#,##0 K");
+	private static final DecimalFormat NO_MMK_DF = new DecimalFormat("#,##0");
+	private static final DecimalFormat MMK_DF = new DecimalFormat("#,##0 MMK");
+	private static final DecimalFormat LAKH_DF = new DecimalFormat("#,##0 K");
 
+	public static String noFormatMMK(int data) {
+		return NO_MMK_DF.format(data);
+	}
+	
 	public static String formatMMK(int data) {
-		if(data > 9999) {
-			return NO_MMK_DF.format(data / 1000);
-		}
-		return DEC_FOR.format(data);
+		return MMK_DF.format(data);
+	}
+	
+	public static String formatLakh(int data) {
+		if(data > 9999)
+			return LAKH_DF.format(data / 1000);
+		return MMK_DF.format(data);
 	}
 	
 	public static String formatCartDate(LocalDate date) {

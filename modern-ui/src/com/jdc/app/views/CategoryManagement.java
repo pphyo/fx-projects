@@ -8,12 +8,10 @@ import java.util.stream.Collectors;
 import com.jdc.app.dao.CategoryDao;
 import com.jdc.app.entity.Category;
 import com.jdc.app.util.StringUtil;
-import com.jdc.app.util.ui.MessageBox;
 import com.jdc.app.util.ui.TableCellFactory;
 import com.jdc.app.util.ui.UIUtil;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
@@ -59,7 +57,7 @@ public class CategoryManagement extends TableCellFactory<Category> {
     	nameCol.setOnEditCommit(e -> {
     		Category c = e.getRowValue();
     		if(StringUtil.isEmpty(e.getNewValue()))
-    			MessageBox.showBox("Please enter category name!", "Empty name", AlertType.INFORMATION);
+    			MessageBox.show("Please enter category name!", false);
     		else
     			catDao.update(e.getNewValue(), c.getId());
     		search();
@@ -122,9 +120,9 @@ public class CategoryManagement extends TableCellFactory<Category> {
         	File file = fc.showOpenDialog(txtName.getScene().getWindow());
         	catDao.upload(file);
 		} catch(IOException e) {
-			MessageBox.showErrorBox(e, "File Error");
+			MessageBox.show(e.getMessage(), true);
 		} catch(Exception e) {
-			MessageBox.showBox("No file selected!", "Nothing Select", AlertType.WARNING);
+			MessageBox.show("No file selected!", false);;
 		}
     	search();
     }

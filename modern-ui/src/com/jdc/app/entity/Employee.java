@@ -1,5 +1,7 @@
 package com.jdc.app.entity;
 
+import com.jdc.app.util.CommonUtil;
+
 public class Employee {
 
 	private int id;
@@ -9,7 +11,6 @@ public class Employee {
 	private Role role;
 	private int salary;
 	private String phone;
-	private String address;
 	
 	public int getId() {
 		return id;
@@ -66,15 +67,11 @@ public class Employee {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	public String getAddress() {
-		return address;
+	
+	public String getSalaryWithFormat() {
+		return CommonUtil.noFormatMMK(salary);
 	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
+	
 	public enum Role {
 		Admin, Manager, Sale
 	}

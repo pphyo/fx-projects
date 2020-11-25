@@ -1,6 +1,7 @@
 package com.jdc.app.entity;
 
 import com.jdc.app.dao.CategoryDao;
+import com.jdc.app.util.CommonUtil;
 
 public class Product {
 
@@ -89,6 +90,10 @@ public class Product {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	
+	public String getPriceWithFormat() {
+		return CommonUtil.noFormatMMK(price);
 	}
 	
 	public String getStockResult() {
