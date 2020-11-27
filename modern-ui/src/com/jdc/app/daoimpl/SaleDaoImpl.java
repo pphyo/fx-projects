@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.jdc.app.dao.SaleDao;
 import com.jdc.app.entity.Customer;
@@ -14,6 +17,7 @@ import com.jdc.app.entity.SaleDTO;
 import com.jdc.app.entity.SaleOrder;
 import com.jdc.app.util.DatabaseConnection;
 import com.jdc.app.util.Security;
+import com.jdc.app.util.StringUtil;
 
 public class SaleDaoImpl implements SaleDao {
 
@@ -29,17 +33,28 @@ public class SaleDaoImpl implements SaleDao {
 				PreparedStatement invStmt = conn.prepareStatement(invSql, Statement.RETURN_GENERATED_KEYS);
 				PreparedStatement orderStmt = conn.prepareStatement(orderSql)) {
 			
-			Customer customer = dto.getCustomer();
+			Customer customer = null;
+			ResultSet rs = null;
 			
-			custStmt.setString(1, customer.getName());
-			custStmt.setString(2, customer.getPhone());
-			custStmt.setString(3, customer.getAddress());
-			custStmt.executeUpdate();
+			Customer dtoCustomer = dto.getInvoice().getCustomer();
+			Customer existingCustomer = findOneCustomer(dtoCustomer.getName());
 			
-			ResultSet rs = custStmt.getGeneratedKeys();
+			if(null != existingCustomer && dtoCustomer.equals(existingCustomer)) {
+				customer = existingCustomer;
+			} else {
 			
-			while(rs.next())
-				customer.setId(rs.getInt(1));
+				custStmt.setString(1, dtoCustomer.getName());
+				custStmt.setString(2, dtoCustomer.getPhone());
+				custStmt.setString(3, dtoCustomer.getAddress());
+				custStmt.executeUpdate();
+				
+				rs = custStmt.getGeneratedKeys();
+				
+				while(rs.next())
+					dtoCustomer.setId(rs.getInt(1));
+				
+				customer = dtoCustomer;
+			}
 			
 			Invoice invoice = dto.getInvoice();
 			
@@ -76,6 +91,126 @@ public class SaleDaoImpl implements SaleDao {
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public List<Customer> findCustomer(String name, String phone, int noOfInvoice, int totalAmount) {
+		String sql = "select c.id, c.name, c.phone, c.address, count(i.customer_id) no_of_invoices,"
+				+ " sum(i.total) total_amount from customer c join invoice i on c.id = i.customer_id"
+				+ " where 1 = 1";
+		
+		List<Customer> result = new ArrayList<>();
+		
+		try(Connection conn = DatabaseConnection.getDbConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql)) {
+			
+			ResultSet rs = null;
+			
+			if(!StringUtil.isEmpty(name)) {
+				String nameSql = sql.concat(" and lower(c.name) like ?");
+				
+				try(PreparedStatement nameStmt = conn.prepareStatement(nameSql)) {
+					
+					nameStmt.setString(1, name.toLowerCase().concat("%"));
+					rs = nameStmt.executeQuery();
+					
+					while(rs.next())
+						result.add(getCustomerObject(rs));
+					
+				}
+			}
+			
+			boolean isNotExistResult = result.size() == 0;
+			
+			if(isNotExistResult) {
+				
+				if(!StringUtil.isEmpty(phone)) {
+					String phoneSql = sql.concat(" and c.phone like ?");
+					
+					try(PreparedStatement phoneStmt = conn.prepareStatement(phoneSql)) {
+						
+						phoneStmt.setString(1, phone.concat("%"));
+						rs = phoneStmt.executeQuery();
+						
+						while(rs.next())
+							result.add(getCustomerObject(rs));
+						
+					}
+				}
+				
+			}
+			
+			if(isNotExistResult) {
+				
+				if(noOfInvoice > 0) {
+					String invSql = sql.concat(" group by i.customer_id having no_of_invoices >= ?");
+					
+					try(PreparedStatement invStmt = conn.prepareStatement(invSql)) {
+						
+						invStmt.setInt(1, noOfInvoice);
+						rs = invStmt.executeQuery();
+						
+						while(rs.next())
+							result.add(getCustomerObject(rs));
+					}
+				}
+				
+			}
+			
+			if(isNotExistResult) {
+				
+				if(totalAmount > 0) {
+					String totSql = sql.concat(" group by i.customer_id having total_amount >= ?");
+					
+					try(PreparedStatement totStmt = conn.prepareStatement(totSql)) {
+						
+						totStmt.setInt(1, totalAmount);
+						rs = totStmt.executeQuery();
+						
+						while(rs.next())
+							result.add(getCustomerObject(rs));
+						
+					}
+				}
+				
+			}
+			
+			isNotExistResult = result.size() == 0;
+			
+			if(isNotExistResult && StringUtil.isEmpty(name)) {
+				rs = stmt.executeQuery();
+				
+				while(rs.next())
+					result.add(getCustomerObject(rs));
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	@Override
+	public List<Customer> findCustomer(String name) {
+		return findCustomer(name, null, 0, 0);
+	}
+
+	@Override
+	public Customer findOneCustomer(String name) {
+		return findCustomer(name).get(0);
+	}
+	
+	private Customer getCustomerObject(ResultSet rs) throws SQLException {
+		Customer c = new Customer();
+		c.setId(rs.getInt("id"));
+		c.setName(rs.getString("name"));
+		c.setPhone(rs.getString("phone"));
+		c.setAddress(rs.getString("address"));
+		c.setNoOfInvoices(rs.getInt("no_of_invoices"));
+		c.setTotalAmount(rs.getInt("total_amount"));
+		return c;
 	}
 
 }

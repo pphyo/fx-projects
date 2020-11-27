@@ -90,9 +90,9 @@ public class ProductDaoImpl implements ProductDao {
 				
 			}
 
-			boolean isNotExistReuslt = result.size() == 0;
+			boolean isNotExistResult = result.size() == 0;
 			
-			if(isNotExistReuslt) {
+			if(isNotExistResult) {
 				if(!StringUtil.isEmpty(product)) {
 					String productSql = sql.concat(" and p.name like ?");
 					
@@ -108,7 +108,7 @@ public class ProductDaoImpl implements ProductDao {
 				}
 			}
 						
-			if(isNotExistReuslt) {
+			if(isNotExistResult) {
 				if(price > 0) {
 					String priceSql = sql.concat(" and p.price >= ?");
 					
@@ -125,9 +125,9 @@ public class ProductDaoImpl implements ProductDao {
 				}
 			}
 			
-			isNotExistReuslt = result.size() == 0;
+			isNotExistResult = result.size() == 0;
 			
-			if(isNotExistReuslt && StringUtil.isEmpty(category)) {
+			if(isNotExistResult && StringUtil.isEmpty(category)) {
 				rs = stmt.executeQuery();
 				
 				while(rs.next())

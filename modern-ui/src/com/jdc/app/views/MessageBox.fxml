@@ -19,7 +19,7 @@
    <children>
       <ImageView fx:id="img" fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" styleClass="img-vw">
          <image>
-            <Image url="@../../../../../imgs/info.png" />
+            <Image url="@../../../../imgs/cancel.png" />
          </image>
       </ImageView>
       <VBox styleClass="ali-cr" HBox.hgrow="ALWAYS">

@@ -70,7 +70,7 @@ public class EmployeeManagement extends TableCellFactory<Employee> {
 	
 	public void search() {
 		tblEmployeeList.getItems().clear();
-		List<Employee> list = empDao.find(txtParams.getText(), TextFieldUtil.getPriceValue(txtParams), txtParams.getText());
+		List<Employee> list = empDao.find(txtParams.getText(), TextFieldUtil.getValue(txtParams), txtParams.getText());
 		tblEmployeeList.getItems().addAll(list);
 	}
 	

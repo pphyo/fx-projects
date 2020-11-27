@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 
 public class TextFieldUtil {
 	
-	public static int getPriceValue(TextField textField) {
+	public static int getValue(TextField textField) {
 		if(textField.getText().isEmpty() || textField.getText() instanceof String) {
 			if(StringUtil.isNumeric(textField.getText()))
 				return Integer.parseInt(textField.getText());

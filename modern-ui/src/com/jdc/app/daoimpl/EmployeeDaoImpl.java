@@ -11,7 +11,6 @@ import com.jdc.app.dao.EmployeeDao;
 import com.jdc.app.entity.Employee;
 import com.jdc.app.entity.Employee.Role;
 import com.jdc.app.util.DatabaseConnection;
-import com.jdc.app.util.Security;
 import com.jdc.app.util.StringUtil;
 
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -29,7 +28,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				PreparedStatement stmt = conn.prepareStatement(isNew ? insertSql : updateSql)) {
 		
 			stmt.setString(1, emp.getLoginId());
-			stmt.setString(2, Security.encodePassword(emp.getLoginPassword()));
+			stmt.setString(2, emp.getLoginPassword());
 			stmt.setString(3, emp.getUsername());
 			stmt.setString(4, emp.getRole().toString());
 			stmt.setInt(5, emp.getSalary());

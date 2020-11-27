@@ -5,22 +5,12 @@ import java.util.List;
 
 public class SaleDTO {
 
-	private Customer customer;
 	private Invoice invoice;
 	private List<SaleOrder> orderList;
 
 	public SaleDTO() {
-		customer = new Customer();
 		invoice = new Invoice();
 		orderList = new ArrayList<>();
-	}
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
 	}
 
 	public Invoice getInvoice() {

@@ -591,7 +591,15 @@
 	-fx-prompt-text-fill: primary;
 }
 
+.date-picker:editable > .arrow-button > * {
+	-fx-opacity: 0;
+}
+
 .date-picker > .arrow-button {
+	-fx-background-image: url("../../../../imgs/down-arrow.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: 30% 30%;
+	-fx-background-position: center;
 	-fx-background-color: transparent;
 }
 
@@ -747,7 +755,7 @@ TilePane {
 }
 
 .mb-vw-fr {
-	-fx-background-color: #CCCCCC;
+	-fx-background-color: linear-gradient(to right top, #A8A9AD, #C4CACE, #CCCCCC, #CCCCCC, #C4CACE, #A8A9AD);
 	-fx-pref-width: 450px;
 	-fx-pref-height: 200px;
 }

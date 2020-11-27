@@ -21,11 +21,14 @@ import com.jdc.app.entity.SaleOrder;
 import com.jdc.app.util.CommonUtil;
 import com.jdc.app.util.StringUtil;
 import com.jdc.app.util.Validation;
+import com.jdc.app.util.ui.AutoCompleteUtil;
 import com.jdc.app.util.ui.CartTableRow;
 import com.jdc.app.util.ui.PosProductBox;
 import com.jdc.app.util.ui.TextFieldUtil;
 import com.jdc.app.util.ui.UIUtil;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -48,7 +51,7 @@ public class SaleManagement {
 	@FXML
 	private TextField txtCustAddress;
 	@FXML
-	private TextField txtTax;
+	private TextField txtDiscount;
 	@FXML
 	private ComboBox<Customer> cbxInvoice;
 	@FXML
@@ -75,6 +78,7 @@ public class SaleManagement {
 	private SaleDTO dto;
 	private ProductDao proDao;
 	private SaleDao saleDao;
+	private StringProperty customerProperty = new SimpleStringProperty();
     
     @FXML
     private void initialize() {
@@ -89,9 +93,17 @@ public class SaleManagement {
     	setOrderName();
     	setInvoiceToBox();
     	
+    	txtDiscount.textProperty().addListener((a, b, c) -> {
+    		if(TextFieldUtil.getValue(txtDiscount) == 0)
+    			lblDiscount.setText("0");
+    		else
+    			lblDiscount.setText(String.valueOf(TextFieldUtil.getValue(txtDiscount)).concat(" %"));
+    	});
     	lblDate.setText(CommonUtil.formatCartDate(LocalDate.now()));
     	lblHeaderTotal.textProperty().bind(lblSubTotal.textProperty());
     	cbxInvoice.valueProperty().addListener((a, b, c) -> addSelectedInvoiceToCart());
+    	
+    	AutoCompleteUtil.attach(txtCustName, saleDao::findCustomer);
     }
     
 	private void setOrderName() {
@@ -106,7 +118,7 @@ public class SaleManagement {
     @FXML
     void search() {
     	tileProBoxHolder.getChildren().clear();
-    	List<Product> list = proDao.find(txtProduct.getText(), txtProduct.getText(), TextFieldUtil.getPriceValue(txtProduct));
+    	List<Product> list = proDao.find(txtProduct.getText(), txtProduct.getText(), TextFieldUtil.getValue(txtProduct));
     	list.stream().map(p -> new PosProductBox(p, this::addToCart)).forEach(tileProBoxHolder.getChildren()::add);
     }
 
@@ -216,27 +228,26 @@ public class SaleManagement {
     			dto = new SaleDTO();
     			
     			if(null == cbxInvoice.getValue())
-    				customer = dto.getCustomer();
+    				customer = new Customer();
     			else
     				customer = cbxInvoice.getValue();
-    		
-	    		Validation.validate(txtCustName.getText(), "Please enter customer name!");
-	    		
+    			    		
 	    		customer.setName(txtCustName.getText());
 	    		customer.setAddress(txtCustAddress.getText());
 	    		customer.setPhone(txtCustPhone.getText());
     		}
     		
-//    		if(!customer.getName().equals(txtCustName.getText())) {
-//    			customer.setName(txtCustName.getText());
-//    		}
-//    		if(!customer.getAddress().equals(txtCustAddress.getText())) {
-//    			customer.setAddress(txtCustAddress.getText());
-//    		}
-//    		if(!customer.getPhone().equals(txtCustPhone.getText())) {
-//    			customer.setPhone(txtCustPhone.getText());
-//    		}
-    		
+    		if(!customer.getName().equals(txtCustName.getText())) {
+    			customer.setName(txtCustName.getText());
+    		}
+    		if(!customer.getAddress().equals(txtCustAddress.getText())) {
+    			customer.setAddress(txtCustAddress.getText());
+    		}
+    		if(!customer.getPhone().equals(txtCustPhone.getText())) {
+    			customer.setPhone(txtCustPhone.getText());
+    		}
+
+    		Validation.validate(txtCustName.getText(), "Please enter customer name!");
            	Validation.validate(rowList, "At least one product in the cart!");
            	
            	//create temp row List and save in collection
@@ -308,6 +319,10 @@ public class SaleManagement {
     			dto = new SaleDTO();
     		}
     		
+    		if(null == customer) {
+    			customer = new Customer();
+    		}
+    		
 	    	Validation.validate(txtCustName.getText(), "Please enter customer name!");
     		
            	Validation.validate(rowList, "At least one product in the cart!");
@@ -315,7 +330,6 @@ public class SaleManagement {
            	if(null!= cbxInvoice.getValue()) {
            		customer = cbxInvoice.getValue();
            	} else {
-           		customer = dto.getCustomer();
            		customer.setName(txtCustName.getText());
            		customer.setAddress(txtCustAddress.getText());
            		customer.setPhone(txtCustPhone.getText());
@@ -334,6 +348,11 @@ public class SaleManagement {
            	dto.getOrderList().addAll(orderList);
            	
            	saleDao.save(dto);
+           	
+           	if(null != cbxInvoice.getValue()) {
+           		unpaidInvoiceList.remove(customer);
+           		setInvoiceToBox();
+           	}
            	
            	prepareCart();
         	

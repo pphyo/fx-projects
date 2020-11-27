@@ -77,7 +77,7 @@ public class ProductManagement extends TableCellFactory<Product> {
 	
 	public void search() {
 		tblProductList.getItems().clear();
-		List<Product> list = proDao.find(txtParams.getText(), txtParams.getText(), TextFieldUtil.getPriceValue(txtParams));
+		List<Product> list = proDao.find(txtParams.getText(), txtParams.getText(), TextFieldUtil.getValue(txtParams));
 		tblProductList.getItems().addAll(list);
 	}
 	
