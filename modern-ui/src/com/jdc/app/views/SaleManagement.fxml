@@ -88,7 +88,7 @@
                   <HBox styleClass="txt-fld">
                      <children>
                         <SVGPath content="M15.469 20.484l-3.469-3.469 1.406-1.406 2.063 2.063 5.109-5.156 1.406 1.406zM11.016 12q-1.641 0-2.836-1.172t-1.195-2.813 1.195-2.836 2.836-1.195 2.813 1.195 1.172 2.836-1.172 2.813-2.813 1.172zM9 17.016l3 3h-9v-2.016q0-1.781 2.742-2.883t5.273-1.102q0.703 0 0.984 0.047z" />
-                        <TextField fx:id="txtCustName" promptText="Customer name" />
+                        <TextField fx:id="txtCustName" />
                      </children>
                   </HBox>
                   <HBox styleClass="txt-fld" GridPane.columnIndex="1">
@@ -102,13 +102,13 @@
                               <String fx:value="ali-c" />
                            </styleClass>
                         </VBox>
-                        <TextField fx:id="txtCustAddress" promptText="Address" />
+                        <TextField fx:id="txtCustAddress" />
                      </children>
                   </HBox>
                   <HBox styleClass="txt-fld" GridPane.rowIndex="1">
                      <children>
                         <SVGPath content="M6.609 10.781q2.25 4.359 6.609 6.609l2.203-2.203q0.469-0.469 1.031-0.234 1.688 0.563 3.563 0.563 0.422 0 0.703 0.281t0.281 0.703v3.516q0 0.422-0.281 0.703t-0.703 0.281q-7.031 0-12.023-4.992t-4.992-12.023q0-0.422 0.281-0.703t0.703-0.281h3.516q0.422 0 0.703 0.281t0.281 0.703q0 1.875 0.563 3.563 0.188 0.609-0.234 1.031z" />
-                        <TextField fx:id="txtCustPhone" promptText="Phone no" />
+                        <TextField fx:id="txtCustPhone" />
                      </children>
                   </HBox>
                   <HBox styleClass="txt-fld" GridPane.columnIndex="1" GridPane.rowIndex="1">

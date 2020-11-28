@@ -27,8 +27,6 @@ import com.jdc.app.util.ui.PosProductBox;
 import com.jdc.app.util.ui.TextFieldUtil;
 import com.jdc.app.util.ui.UIUtil;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -78,7 +76,6 @@ public class SaleManagement {
 	private SaleDTO dto;
 	private ProductDao proDao;
 	private SaleDao saleDao;
-	private StringProperty customerProperty = new SimpleStringProperty();
     
     @FXML
     private void initialize() {
@@ -98,12 +95,31 @@ public class SaleManagement {
     			lblDiscount.setText("0");
     		else
     			lblDiscount.setText(String.valueOf(TextFieldUtil.getValue(txtDiscount)).concat(" %"));
+    		
+    		calculate();
     	});
     	lblDate.setText(CommonUtil.formatCartDate(LocalDate.now()));
     	lblHeaderTotal.textProperty().bind(lblSubTotal.textProperty());
     	cbxInvoice.valueProperty().addListener((a, b, c) -> addSelectedInvoiceToCart());
     	
-    	AutoCompleteUtil.attach(txtCustName, saleDao::findCustomer);
+    	
+    	if(!saleDao.findCustomer(txtCustName.getText()).isEmpty())
+			AutoCompleteUtil.attach(txtCustName, saleDao::findCustomer);
+    	
+    	txtCustName.textProperty().addListener((a, b, c) -> {
+    		
+    		if(!StringUtil.isEmpty(txtCustName.getText())) {
+    			String param = txtCustName.getText();
+        		Customer cust = saleDao.findOneCustomer(param);
+        		if(null != cust) {
+        			txtCustPhone.setText(cust.getPhone());
+        			txtCustAddress.setText(cust.getAddress());
+        		}
+    		} else {
+    			txtCustPhone.setText("");
+    			txtCustAddress.setText("");
+    		}
+    	});
     }
     
 	private void setOrderName() {
@@ -200,9 +216,9 @@ public class SaleManagement {
     private void calculate() {
     	int subTotal = orderList.stream().mapToInt(so -> so.getTotal()).sum();
     	int tax = Integer.parseInt(lblTax.getText());
-    	int discount = StringUtil.isEmpty(lblDiscount.getText()) ? 0 : Integer.parseInt(lblDiscount.getText());
-    	
-    	int total = discount > 0 ? (subTotal / discount) + tax : subTotal + tax;
+    	int discount = StringUtil.isEmpty(lblDiscount.getText()) ? 0 : Integer.parseInt(lblDiscount.getText().replace("%", "").trim());
+    	int calDis = discount > 0 ? (subTotal / 100) * discount : 0;
+    	int total = (subTotal - calDis) + tax;
     	
     	lblSubTotal.setText(CommonUtil.noFormatMMK(subTotal));
     	lblTotal.setText(CommonUtil.noFormatMMK(total));
@@ -227,14 +243,14 @@ public class SaleManagement {
     		if(null == dto) {
     			dto = new SaleDTO();
     			
-    			if(null == cbxInvoice.getValue())
+    			if(null == cbxInvoice.getValue()) {
     				customer = new Customer();
-    			else
+    	    		customer.setName(txtCustName.getText());
+    	    		customer.setAddress(txtCustAddress.getText());
+    	    		customer.setPhone(txtCustPhone.getText());
+    			} else {
     				customer = cbxInvoice.getValue();
-    			    		
-	    		customer.setName(txtCustName.getText());
-	    		customer.setAddress(txtCustAddress.getText());
-	    		customer.setPhone(txtCustPhone.getText());
+    			}
     		}
     		
     		if(!customer.getName().equals(txtCustName.getText())) {
@@ -341,13 +357,13 @@ public class SaleManagement {
            	invoice.setInvoiceTime(LocalTime.now());
            	invoice.setSubTotal(Integer.parseInt(lblSubTotal.getText().replace(",", "")));
            	invoice.setTax(Integer.parseInt(lblTax.getText().replace(",", "")));
-           	invoice.setDiscount(Integer.parseInt(lblDiscount.getText().replace(",", "")));
+           	invoice.setDiscount(Integer.parseInt(lblDiscount.getText().replace("%", "").trim()));
            	invoice.setTotal(Integer.parseInt(lblTotal.getText().replace(",", "")));
            	
            	dto.getOrderList().clear();
            	dto.getOrderList().addAll(orderList);
            	
-           	saleDao.save(dto);
+           	saleDao.saveSale(dto);
            	
            	if(null != cbxInvoice.getValue()) {
            		unpaidInvoiceList.remove(customer);

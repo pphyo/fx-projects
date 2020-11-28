@@ -35,7 +35,7 @@
             </HBox>
             <HBox>
                <children>
-                  <Button mnemonicParsing="false" onAction="#close" styleClass="btn" text="Close" />
+                  <Button mnemonicParsing="false" onAction="#close" styleClass="btn" text="OK" />
                </children>
                <styleClass>
                   <String fx:value="ali-cr" />

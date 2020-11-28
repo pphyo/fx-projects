@@ -1,8 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<VBox styleClass="view" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.app.views.SaleHistory">
+   <children>
+      <HBox>
+         <children>
+            <DatePicker fx:id="dpFrom" promptText="From:" />
+            <DatePicker fx:id="dpTo" promptText="To:" />
+            <HBox>
+               <children>
+                  <TextField fx:id="txtParams" promptText="Search by" styleClass="wid180" />
+                  <VBox fx:id="searchBox" onMouseClicked="#search" styleClass="ali-c">
+                     <children>
+                        <SVGPath content="M9.516 14.016q1.875 0 3.188-1.313t1.313-3.188-1.313-3.188-3.188-1.313-3.188 1.313-1.313 3.188 1.313 3.188 3.188 1.313zM15.516 14.016l4.969 4.969-1.5 1.5-4.969-4.969v-0.797l-0.281-0.281q-1.781 1.547-4.219 1.547-2.719 0-4.617-1.875t-1.898-4.594 1.898-4.617 4.617-1.898 4.594 1.898 1.875 4.617q0 0.984-0.469 2.227t-1.078 1.992l0.281 0.281h0.797z" />
+                     </children>
+                  </VBox>
+               </children>
+               <styleClass>
+                  <String fx:value="search-box" />
+                  <String fx:value="ali-cl" />
+                  <String fx:value="spac5" />
+               </styleClass>
+            </HBox>
+            
+         </children>
+         <styleClass>
+            <String fx:value="search-bar" />
+            <String fx:value="ali-cl" />
+            <String fx:value="pad10-rl" />
+            <String fx:value="spac10" />
+         </styleClass>
+      </HBox>
+      <VBox styleClass="pad10-rbl" VBox.vgrow="ALWAYS">
+         <children>
+            <TableView fx:id="tblInvoiceList" editable="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn maxWidth="2000.0" minWidth="70.0" prefWidth="100.0" text="Date">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="categoryName" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn maxWidth="2000.0" minWidth="70.0" prefWidth="100.0" text="Time">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="categoryName" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn maxWidth="2000.0" minWidth="70.0" prefWidth="100.0" text="Product">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="name" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn maxWidth="1000.0" minWidth="30.0" prefWidth="50.0" text="Price">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="priceWithFormat" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn maxWidth="2000.0" minWidth="70.0" prefWidth="100.0" text="Description">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="description" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn maxWidth="2000.0" minWidth="70.0" prefWidth="100.0" text="Creator">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="creator" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn maxWidth="800.0" minWidth="50.0" prefWidth="60.0" text="Stock">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="stockResult" />
+                     </cellValueFactory>
+                  </TableColumn>
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
 </VBox>
-

@@ -12,9 +12,11 @@ public interface SaleDao {
 		return new SaleDaoImpl();
 	}
 	
-	void save(SaleDTO dto);
+	void saveSale(SaleDTO dto);
 	
-	List<Customer> findCustomer(String name, String phone, int noOfInvoice, int totalAmount);
+	void saveCustomer(Customer c);
+	void deleteCustomer(Customer c);
+	List<Customer> findCustomer(String name, String phone, int totalAmount);
 	List<Customer> findCustomer(String name);
 	Customer findOneCustomer(String name);
 

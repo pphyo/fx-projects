@@ -21,15 +21,16 @@ import com.jdc.app.util.StringUtil;
 
 public class SaleDaoImpl implements SaleDao {
 
+	private final String custSql = "insert into customer (name, phone, address) values (?, ?, ?)";
+	
 	@Override
-	public void save(SaleDTO dto) {
+	public void saveSale(SaleDTO dto) {
 		
-		String custsql = "insert into customer (name, phone, address) values (?, ?, ?)";
 		String invSql = "insert into invoice (inv_date, inv_time, sub_total, tax, discount, total, customer_id, employee_id) values (?, ?, ?, ?, ?, ?, ?, ?)";
 		String orderSql = "insert into sale_order (quantity, unit_price, total, invoice_id, product_id, product_category_id) values (?, ?, ?, ?, ?, ?)";
 		
 		try(Connection conn = DatabaseConnection.getDbConnection();
-				PreparedStatement custStmt = conn.prepareStatement(custsql, Statement.RETURN_GENERATED_KEYS);
+				PreparedStatement custStmt = conn.prepareStatement(custSql, Statement.RETURN_GENERATED_KEYS);
 				PreparedStatement invStmt = conn.prepareStatement(invSql, Statement.RETURN_GENERATED_KEYS);
 				PreparedStatement orderStmt = conn.prepareStatement(orderSql)) {
 			
@@ -92,11 +93,49 @@ public class SaleDaoImpl implements SaleDao {
 		}
 		
 	}
+	
+	@Override
+	public void saveCustomer(Customer c) {
+		
+		String updateSql = "update customer set name = ?, phone = ?, address = ? where id = ?";
+		
+		boolean isNew = c.getId() == 0;
+		
+		try(Connection conn = DatabaseConnection.getDbConnection();
+				PreparedStatement stmt = conn.prepareStatement(isNew ? custSql : updateSql)) {
+			
+			stmt.setString(1, c.getName());
+			stmt.setString(2, c.getPhone());
+			stmt.setString(3, c.getAddress());
+			if(!isNew)
+				stmt.setInt(4, c.getId());
+			stmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	@Override
-	public List<Customer> findCustomer(String name, String phone, int noOfInvoice, int totalAmount) {
+	public void deleteCustomer(Customer c) {
+		String sql = "delete from customer where id = ?";
+		
+		try(Connection conn = DatabaseConnection.getDbConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql)) {
+			
+			stmt.setInt(1, c.getId());
+			stmt.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public List<Customer> findCustomer(String name, String phone, int totalAmount) {
 		String sql = "select c.id, c.name, c.phone, c.address, count(i.customer_id) no_of_invoices,"
-				+ " sum(i.total) total_amount from customer c join invoice i on c.id = i.customer_id"
+				+ " sum(i.total) total_amount from customer c left join invoice i on c.id = i.customer_id"
 				+ " where 1 = 1";
 		
 		List<Customer> result = new ArrayList<>();
@@ -107,7 +146,7 @@ public class SaleDaoImpl implements SaleDao {
 			ResultSet rs = null;
 			
 			if(!StringUtil.isEmpty(name)) {
-				String nameSql = sql.concat(" and lower(c.name) like ?");
+				String nameSql = sql.concat(" and lower(c.name) like ? group by c.id");
 				
 				try(PreparedStatement nameStmt = conn.prepareStatement(nameSql)) {
 					
@@ -125,7 +164,7 @@ public class SaleDaoImpl implements SaleDao {
 			if(isNotExistResult) {
 				
 				if(!StringUtil.isEmpty(phone)) {
-					String phoneSql = sql.concat(" and c.phone like ?");
+					String phoneSql = sql.concat(" and c.phone like ? group by c.id");
 					
 					try(PreparedStatement phoneStmt = conn.prepareStatement(phoneSql)) {
 						
@@ -142,25 +181,8 @@ public class SaleDaoImpl implements SaleDao {
 			
 			if(isNotExistResult) {
 				
-				if(noOfInvoice > 0) {
-					String invSql = sql.concat(" group by i.customer_id having no_of_invoices >= ?");
-					
-					try(PreparedStatement invStmt = conn.prepareStatement(invSql)) {
-						
-						invStmt.setInt(1, noOfInvoice);
-						rs = invStmt.executeQuery();
-						
-						while(rs.next())
-							result.add(getCustomerObject(rs));
-					}
-				}
-				
-			}
-			
-			if(isNotExistResult) {
-				
 				if(totalAmount > 0) {
-					String totSql = sql.concat(" group by i.customer_id having total_amount >= ?");
+					String totSql = sql.concat(" group by c.id having total_amount >= ?");
 					
 					try(PreparedStatement totStmt = conn.prepareStatement(totSql)) {
 						
@@ -178,10 +200,15 @@ public class SaleDaoImpl implements SaleDao {
 			isNotExistResult = result.size() == 0;
 			
 			if(isNotExistResult && StringUtil.isEmpty(name)) {
-				rs = stmt.executeQuery();
+				String noResultSql = sql.concat(" group by c.id");
 				
-				while(rs.next())
-					result.add(getCustomerObject(rs));
+				try(PreparedStatement noResultStmt = conn.prepareStatement(noResultSql)) {
+					rs = noResultStmt.executeQuery();
+					
+					while(rs.next())
+						result.add(getCustomerObject(rs));
+				}
+				
 			}
 			
 			
@@ -194,14 +221,14 @@ public class SaleDaoImpl implements SaleDao {
 
 	@Override
 	public List<Customer> findCustomer(String name) {
-		return findCustomer(name, null, 0, 0);
+		return findCustomer(name, null, 0);
 	}
 
 	@Override
 	public Customer findOneCustomer(String name) {
 		return findCustomer(name).get(0);
 	}
-	
+
 	private Customer getCustomerObject(ResultSet rs) throws SQLException {
 		Customer c = new Customer();
 		c.setId(rs.getInt("id"));

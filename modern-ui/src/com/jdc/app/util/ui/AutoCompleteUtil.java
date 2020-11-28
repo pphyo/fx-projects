@@ -17,8 +17,6 @@ public class AutoCompleteUtil {
         
         textField.widthProperty().addListener((a,b,c) -> {
         	suggestions.setStyle(String.format("-fx-pref-width: %f;", c));
-        	suggestions.setStyle("-fx-background-color: #dcdcdc");
-        	suggestions.setStyle("-fx-text-fill: #051937");
         });
                
         Consumer<T> executor = s -> {

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<HBox stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.app.views.CustomerEdit">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="login-part">
+         <children>
+            <VBox VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox styleClass="login-logo-wrap">
+                     <children>
+                        <ImageView fitHeight="96.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../imgs/accusoft.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="login-logo-lbl" text="Mini POS" />
+                     </children>
+                  </HBox>
+                  <VBox styleClass="app-desc-wrap">
+                     <children>
+                        <Label styleClass="app-desc1" text="Manage sales for your Mart" />
+                     </children>
+                  </VBox>
+               </children>
+               <styleClass>
+                  <String fx:value="ali-c" />
+                  <String fx:value="spac30" />
+               </styleClass>
+            </VBox>
+            <Label styleClass="dev-ads" text="Developed By JDC" />
+         </children>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="login-form" HBox.hgrow="ALWAYS">
+         <children>
+            <GridPane fx:id="grdNode" vgap="5.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label fx:id="lblTitle" styleClass="lg-form-title" text="Add Customer" />
+                  <Label text="Name" GridPane.rowIndex="1" />
+                  <HBox styleClass="txt-fld" GridPane.rowIndex="2">
+                     <children>
+                        <VBox>
+                           <children>
+                              <SVGPath content="M15.469 20.484l-3.469-3.469 1.406-1.406 2.063 2.063 5.109-5.156 1.406 1.406zM11.016 12q-1.641 0-2.836-1.172t-1.195-2.813 1.195-2.836 2.836-1.195 2.813 1.195 1.172 2.836-1.172 2.813-2.813 1.172zM9 17.016l3 3h-9v-2.016q0-1.781 2.742-2.883t5.273-1.102q0.703 0 0.984 0.047z" />
+                           </children>
+                        </VBox>
+                        <TextField fx:id="txtName" promptText="Customer name" />
+                     </children>
+                  </HBox>
+                  <Label text="Phone" GridPane.rowIndex="3" />
+                  <HBox styleClass="txt-fld" GridPane.rowIndex="4">
+                     <children>
+                        <VBox>
+                           <children>
+                              <SVGPath content="M6.609 10.781q2.25 4.359 6.609 6.609l2.203-2.203q0.469-0.469 1.031-0.234 1.688 0.563 3.563 0.563 0.422 0 0.703 0.281t0.281 0.703v3.516q0 0.422-0.281 0.703t-0.703 0.281q-7.031 0-12.023-4.992t-4.992-12.023q0-0.422 0.281-0.703t0.703-0.281h3.516q0.422 0 0.703 0.281t0.281 0.703q0 1.875 0.563 3.563 0.188 0.609-0.234 1.031z" />
+                           </children>
+                        </VBox>
+                        <TextField fx:id="txtPhone" promptText="Phone" />
+                     </children>
+                  </HBox>
+                  <Label text="Address" GridPane.rowIndex="5" />
+                  <HBox styleClass="txt-fld" GridPane.rowIndex="6">
+                     <children>
+                        <VBox>
+                           <children>
+                              <SVGPath content="M12 14.016q1.031 0 2.203-0.633t1.781-1.523q0-0.891-1.383-1.477t-2.602-0.586-2.602 0.586-1.383 1.477q1.406 2.156 3.984 2.156zM12 3.984q-0.844 0-1.43 0.586t-0.586 1.43 0.586 1.43 1.43 0.586 1.43-0.586 0.586-1.43-0.586-1.43-1.43-0.586zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z" />
+                           </children>
+                        </VBox>
+                        <TextField fx:id="txtAddress" promptText="Address" />
+                     </children>
+                  </HBox>
+                  <HBox styleClass="lg-button" GridPane.rowIndex="7">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#close" text="Close" />
+                        <Button mnemonicParsing="false" onAction="#save" text="Save" />
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="login-frame" />
+      <String fx:value="cust-vw-fr" />
+   </styleClass>
+</HBox>
