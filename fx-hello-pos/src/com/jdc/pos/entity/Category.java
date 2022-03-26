@@ -1,9 +1,5 @@
 package com.jdc.pos.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter @Setter
 public class Category {
 
 	private int id;
@@ -11,6 +7,22 @@ public class Category {
 	
 	public Category() {}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public Category(String line) {
 		String[] arr = line.split("\t");
 		name = arr[0];

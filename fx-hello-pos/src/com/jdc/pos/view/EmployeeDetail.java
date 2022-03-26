@@ -94,6 +94,7 @@ public class EmployeeDetail {
 			
 			LocalDate now = LocalDate.now();
 			LocalDate birthDay = emp.getDob();
+			
 			int curYear = now.getMonthValue() < birthDay.getMonthValue() ? now.compareTo(birthDay) - 1 : now.compareTo(birthDay);
 			int month = now.getMonthValue() > birthDay.getMonthValue() ? now.getMonthValue() - birthDay.getMonthValue() : 12 - (birthDay.getMonthValue() - now.getMonthValue()) == 12 ? 0 : 12 - (birthDay.getMonthValue() - now.getMonthValue());
 			int day = now.getDayOfMonth() > birthDay.getDayOfMonth() ? now.getDayOfMonth() - birthDay.getDayOfMonth() : now.lengthOfMonth() - (birthDay.getDayOfMonth() - now.getDayOfMonth());
