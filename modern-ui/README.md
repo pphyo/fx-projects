@@ -9,7 +9,8 @@
 
 #### Database
 - Enter MySQL server with command `mysql -u <user> -p<password>`
-- Create database `CREATE DATABASE modern_pos_db`
+- Create database `CREATE DATABASE modern_pos_db;`
+- Create user `CREATE USER 'modernadm'@'localhost' identified with 'modernpass';`
 - Grant priviliges `GRANT ALL PRIVILEGES ON modern_pos_db.* TO 'modernadm'@'localhost';`
 - generate table from `env-preparation/modern-pos.mwb`
 
