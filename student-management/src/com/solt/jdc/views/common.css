@@ -1,0 +1,171 @@
+.root {
+	p: #051937;
+	s: #A8EB12;
+	a: #00C9B7;
+}
+
+.frame {
+	-fx-pref-width: 1080px;
+	-fx-pref-height: 700px;
+}
+
+.menu-bar {
+	-fx-pref-height: 60px;
+}
+
+.menu-btn {
+	-fx-pref-width: 70px;
+	-fx-padding: 5px;
+	-fx-spacing: 5px;
+	-fx-alignment: center;
+}
+
+.menu-btn:hover {
+	-fx-cursor: hand;
+}
+
+.svg-wrap {
+	-fx-alignment: center;
+	-fx-pref-height: 25px;
+}
+
+.view-frame {
+	-fx-pref-width: 1080px;
+	-fx-pref-height: 640px;
+}
+
+.search-bar {
+	-fx-pref-height: 60px;
+	-fx-padding: 10px;
+	-fx-spacing: 10px;
+	-fx-alignment: center-left;
+}
+
+.class-box {
+	-fx-pref-width: 165px;
+	-fx-pref-height: 100px;
+	-fx-background-color: p;
+	-fx-alignment: center;
+	-fx-spacing: 5px;
+	-fx-border-radius: 10px;
+	-fx-background-radius: 10px;
+}
+
+.class-box > .year, .class-box > .grade {
+	-fx-font-family: "JetBrans Mono";
+	-fx-text-fill: white;
+}
+
+.class-box > .year {
+	-fx-font-size: 20px;
+}
+
+.class-box > .grade {
+	-fx-font-size: 15px;
+}
+
+.add-btn {
+	-fx-alignment: center;
+	-fx-spacing: 5px;
+	-fx-pref-width: 40px;
+}
+
+.add-btn > SVGPath {
+	-fx-fill: p;
+}
+
+.add-btn:hover > SVGPath {
+	-fx-fill: grey;
+	-fx-cursor: hand;
+}
+
+.text-field, .text-area {
+	-fx-pref-width: 150px;
+}
+
+.combo-box {
+	-fx-pref-width: 120px;
+}
+
+.pad10-rbl {
+	-fx-padding: 0 10 10 10;
+}
+
+.pad10 {
+	-fx-padding: 10px;
+}
+
+.spa10 {
+	-fx-spacing: 10px;
+}
+
+.ali-cl {
+	-fx-alignment: center-left;
+}
+
+.button {
+	-fx-pref-width: 70px;
+}
+
+.button:hover {
+	-fx-cursor: hand;
+}
+
+TilePane {
+	-fx-padding: 10px;
+	-fx-hgap: 10px;
+	-fx-vgap: 10px;
+}
+
+.cls-edit-view {
+	-fx-pref-width: 400px;
+	-fx-pref-height: 200px;
+}
+
+.stu-eidt-view {
+	-fx-pref-width: 300px;	
+	-fx-pref-height: 400px;
+}
+
+.sub-edit-view {
+	-fx-pref-width: 300px;
+	-fx-pref-height: 270px;
+}
+
+.sub-inn {
+	-fx-pref-width: 120px;
+}
+
+.sub-box {
+	-fx-pref-width: 245px;
+	-fx-pref-height: 100px;
+	-fx-background-color: grey;
+	-fx-background-radius:5px;
+	-fx-border-radius: 5px;
+	-fx-alignment: center;
+}
+
+.sub-box > .label {
+	-fx-font-family: "JetBrains Mono";
+	-fx-text-fill: white;
+	-fx-font-size: 17px;
+	-fx-font-weight: bold;
+}
+
+.title-wrap {
+	-fx-pref-height: 80px;
+	-fx-padding: 10px;
+	-fx-alignment: center;
+	-fx-background-color: grey
+}
+
+.title-wrap > Label {
+	-fx-font-size: 25px;
+	-fx-font-weight: bold;
+	-fx-text-fill: s;
+}
+
+.login-view {
+	-fx-pref-width: 400px;
+	-fx-pref-height: 250px;
+}

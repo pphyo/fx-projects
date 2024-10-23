@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="frame" stylesheets="@common.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solt.jdc.views.RootFrame">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0" styleClass="menu-bar">
+         <children>
+            <VBox onMouseClicked="#showClassroom" styleClass="menu-btn">
+               <children>
+                  <VBox styleClass="svg-wrap">
+                     <children>
+                        <SVGPath content="M9.984 3h13.031v18h-6v-3.984h1.969v-2.016h-1.969v-2.016h1.969v-1.969h-1.969v-1.828l-2.016-1.359v-0.844h-1.266q-1.594-1.031-3.75-2.484v-1.5zM8.156 5.719l6.844 4.547v10.734h-5.016v-8.016h-3.984v8.016h-5.016v-10.5z" />
+                     </children>
+                  </VBox>
+                  <Label text="Classroom" />
+               </children>
+            </VBox>
+            <VBox onMouseClicked="#showStudent" styleClass="menu-btn">
+               <children>
+                  <VBox styleClass="svg-wrap">
+                     <children>
+                        <SVGPath content="M18.984 18.984v-13.969h-13.969v13.969h13.969zM18.984 3q0.797 0 1.406 0.609t0.609 1.406v13.969q0 0.797-0.609 1.406t-1.406 0.609h-13.969q-0.797 0-1.406-0.609t-0.609-1.406v-13.969q0-0.797 0.609-1.406t1.406-0.609h13.969zM16.5 16.266v0.75h-9v-0.75q0-1.031 1.547-1.641t2.953-0.609 2.953 0.609 1.547 1.641zM12 12.234q-0.938 0-1.594-0.68t-0.656-1.57 0.656-1.57 1.594-0.68 1.594 0.68 0.656 1.57-0.656 1.57-1.594 0.68z" />
+                     </children>
+                  </VBox>
+                  <Label text="Student" />
+               </children>
+            </VBox>
+            <VBox onMouseClicked="#showSubject" styleClass="menu-btn">
+               <children>
+                  <VBox styleClass="svg-wrap">
+                     <children>
+                        <SVGPath content="M10.5 15l-2.25-3-1.734 2.25-1.266-1.5-1.734 2.25h6.984zM12 9v6q0 0.797-0.609 1.406t-1.406 0.609h-6q-0.797 0-1.383-0.609t-0.586-1.406v-6q0-0.797 0.586-1.406t1.383-0.609h6q0.797 0 1.406 0.609t0.609 1.406zM14.016 17.016v-2.016h7.969v2.016h-7.969zM21.984 6.984v2.016h-7.969v-2.016h7.969zM21.984 12.984h-7.969v-1.969h7.969v1.969z" />
+                     </children>
+                  </VBox>
+                  <Label text="Subject" />
+               </children>
+            </VBox>
+            <VBox onMouseClicked="#showExam" styleClass="menu-btn">
+               <children>
+                  <VBox styleClass="svg-wrap">
+                     <children>
+                        <SVGPath content="M18.984 18.984v-10.969h-13.969v10.969h13.969zM15.984 0.984h2.016v2.016h0.984q0.797 0 1.406 0.609t0.609 1.406v13.969q0 0.797-0.609 1.406t-1.406 0.609h-13.969q-0.844 0-1.43-0.586t-0.586-1.43v-13.969q0-0.797 0.586-1.406t1.43-0.609h0.984v-2.016h2.016v2.016h7.969v-2.016zM17.016 12v5.016h-5.016v-5.016h5.016z" />
+                     </children>
+                  </VBox>
+                  <Label text="Exam" />
+               </children>
+            </VBox>
+            <VBox onMouseClicked="#showResult" styleClass="menu-btn">
+               <children>
+                  <VBox styleClass="svg-wrap">
+                     <children>
+                        <SVGPath content="M18.984 6.984v-1.969h-9.984v1.969h9.984zM15 15v-2.016h-6v2.016h6zM18.984 11.016v-2.016h-9.984v2.016h9.984zM20.016 2.016q0.797 0 1.383 0.586t0.586 1.383v12q0 0.797-0.586 1.406t-1.383 0.609h-12q-0.797 0-1.406-0.609t-0.609-1.406v-12q0-0.797 0.609-1.383t1.406-0.586h12zM3.984 6v14.016h14.016v1.969h-14.016q-0.797 0-1.383-0.586t-0.586-1.383v-14.016h1.969z" />
+                     </children>
+                  </VBox>
+                  <Label text="Result" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <StackPane fx:id="viewHolder" prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+   </children>
+</VBox>
