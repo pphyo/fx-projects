@@ -20,4 +20,11 @@
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>java</name>
+			<type>2</type>
+			<location>/home/pphyo/git/my-projects/modern-ui/src/main/java</location>
+		</link>
+	</linkedResources>
 </projectDescription>

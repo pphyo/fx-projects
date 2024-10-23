@@ -1,0 +1,8 @@
+Foods
+Drinks
+Snacks
+Books
+Fashion
+Electronic
+Mobile
+Computer

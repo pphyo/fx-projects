@@ -16,7 +16,7 @@ import com.jdc.app.entity.Invoice;
 import com.jdc.app.entity.SaleDTO;
 import com.jdc.app.entity.SaleOrder;
 import com.jdc.app.util.DatabaseConnection;
-import com.jdc.app.util.Security;
+import com.jdc.app.util.SecurityUtils;
 import com.jdc.app.util.StringUtil;
 
 public class SaleDaoImpl implements SaleDao {
@@ -66,7 +66,7 @@ public class SaleDaoImpl implements SaleDao {
 			invStmt.setInt(5, invoice.getDiscount());
 			invStmt.setInt(6, invoice.getTotal());
 			invStmt.setInt(7, customer.getId());
-			invStmt.setInt(8, Security.getEmployee().getId());
+			invStmt.setInt(8, SecurityUtils.getEmployee().getId());
 			invStmt.executeUpdate();
 			
 			rs = invStmt.getGeneratedKeys();

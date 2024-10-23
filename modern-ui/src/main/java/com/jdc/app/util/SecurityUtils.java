@@ -6,7 +6,7 @@ import java.util.Base64;
 
 import com.jdc.app.entity.Employee;
 
-public class Security {
+public class SecurityUtils {
 
 	private static Employee employee;
 
@@ -15,7 +15,7 @@ public class Security {
 	}
 
 	public static void setEmployee(Employee employee) {
-		Security.employee = employee;
+		SecurityUtils.employee = employee;
 	}
 	
 	public static String encodePassword(String password) throws NoSuchAlgorithmException {

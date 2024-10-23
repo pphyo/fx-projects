@@ -3,7 +3,7 @@ package com.jdc.app.views;
 import com.jdc.app.PosException;
 import com.jdc.app.dao.EmployeeDao;
 import com.jdc.app.entity.Employee;
-import com.jdc.app.util.Security;
+import com.jdc.app.util.SecurityUtils;
 import com.jdc.app.util.StringUtil;
 
 import javafx.fxml.FXML;
@@ -39,12 +39,12 @@ public class Login {
 			if(StringUtil.isEmpty(txtLoginPassword.getText()))
 				throw new PosException("Please enter login password!");
 			
-			Employee emp = EmployeeDao.getInstance().getOne(txtLoginId.getText(), txtLoginPassword.getText());
+			Employee emp = EmployeeDao.getInstance().getOne(txtLoginId.getText(), SecurityUtils.encodePassword(txtLoginPassword.getText()));
 			
 			if(null == emp)
 				throw new PosException("User not found!");
 			
-			Security.setEmployee(emp);
+			SecurityUtils.setEmployee(emp);
 			RootFrame.show();
 			close();
 		} catch (Exception e) {

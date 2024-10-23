@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.jdc.app.daoimpl.EmployeeDaoImpl;
 import com.jdc.app.entity.Employee;
-import com.jdc.app.entity.Employee.Role;
 
 public interface EmployeeDao {
 	

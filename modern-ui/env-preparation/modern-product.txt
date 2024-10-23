@@ -1,0 +1,28 @@
+Category	Product	Price	Stock	Description
+Foods	Pizza	20000	In stock	Large
+Foods	Shrimp Salad	5500	In stock	Raw Salad
+Foods	Hot Dog	1000	In stock
+Foods	Fried Gyoza	7500	In stock
+Drinks	Burn	600	In stock
+Drinks	M-150	500	In stock
+Drinks	Coca Cola	400	In stock	Small
+Drinks	Carabao	600	In stock	Include Price
+Snacks	Cloret	200	In stock
+Snacks	Sea Weed	400	In stock
+Books	Effective Java	20000	In stock	Author By Josua Bloch
+Books	Clean Code	30000	In stock	By Robert C Martin
+Books	PWD	12000	In stock	By Ei Mg
+Books	Head First Java	19000	In stock
+Fashion	Jacket	80000	In stock	With Sheep Hair
+Fashion	Belt	10000	In stock	Leather belt
+Fashion	Trouser	20000	In stock	Skinny Jin
+Electronic	Chandiler	45000	In stock	With diamond effect
+Electronic	Bulb	300	In stock	W-100
+Mobile	Red Mi Note 8 Pro	270000	In stock	Global Version
+Mobile	Red K 30	350000	In stock
+Mobile	IPhone 11 Pro	2000000	In stock
+Mobile	Red Mi Black Shark	800000	In stock
+Computer	Asus	900000	In stock	
+Computer	Dell	800000	In stock
+Computer	Acer	850000	In stock
+Computer	Lenovo	980000	In stock

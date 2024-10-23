@@ -3,7 +3,7 @@ package com.jdc.app.views;
 import java.time.LocalTime;
 
 import com.jdc.app.util.CommonUtil;
-import com.jdc.app.util.Security;
+import com.jdc.app.util.SecurityUtils;
 import com.jdc.app.views.page.Page;
 import com.jdc.app.views.page.PageLoader;
 
@@ -50,7 +50,7 @@ public class RootFrame implements PageLoader {
 	private void initialize() {
 		playClock();
 		loadView(Page.Dashboard);
-		user.setText(Security.getEmployee().getUsername());
+		user.setText(SecurityUtils.getEmployee().getUsername());
 	}
 	
 	public static void show() {
