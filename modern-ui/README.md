@@ -11,6 +11,7 @@
 - Enter MySQL server with command `mysql -u <user> -p<password>`
 - Create database `CREATE DATABASE modern_pos_db`
 - Grant priviliges `GRANT ALL PRIVILEGES ON modern_pos_db.* TO 'modernadm'@'localhost';`
+- generate table from `env-preparation/modern-pos.mwb`
 
 ### Run the Application
 Open Main class and `right click` > `Run Configurations` > `Arguments` . In the `VM Arguments` box add this<br /><br />
